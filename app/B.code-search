@@ -1,0 +1,57 @@
+# Query: B
+# ContextLines: 1
+
+14 results - 5 files
+
+app/brands.tsx:
+  75            &quot;We got rid of nearly a dozen different tools because of what
+  76:           Citrux does for us.&quot;
+  77          </div>
+
+app/faq.tsx:
+  25      <AccordionItem value="item-1">
+  26:       <AccordionTrigger>What is Citrux?</AccordionTrigger>
+  27        <AccordionContent>
+  28:         Citrux is a full fledge marketing agency that specializes in branding, web design, and digital marketing.
+  29        </AccordionContent>
+
+app/shopify-stores.tsx:
+   6      image: "/images/image2.png",
+   7:     quote: "Citrux showed us to get started, what to do, and how to do it.",
+   8      name: "Jason Scer",
+
+  12      quote:
+  13:       "We had no idea how to get started, but Citrux showed us the way. And we were able to create something amazing.",
+  14      name: "John Prency",
+
+  19      quote:
+  20:       "The team at Citrux is amazing. They helped us create a stunning store that we are proud of.",
+  21      name: "Miguel Martinez",
+
+app/book/page.tsx:
+  22  
+  23:         <InlineWidget url="https://calendly.com/birdsoftware/15min" />
+  24        </div>
+
+app/contact/page.tsx:
+   47    help: z.enum([
+   48:     "Evaluate Citrux for my company",
+   49      "Learn More",
+
+   68    company_name: string;
+   69:   help: "Evaluate Citrux for my company" | "Learn More" | "Get a Quote" | "Other";
+   70    services:
+
+  143            >
+  144:             Let&apos;s talk about how Citrux can help your team work better.
+  145            </div>
+
+  300                          <div className="flex gap-4">
+  301:                           <SelectItem value="Evaluate Citrux for my company">
+  302:                             Evaluate Citrux for my company
+  303                            </SelectItem>
+
+  342                  <div className="text-xs font-light  md:w-3/4 mb-1 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
+  343:                   I agree to Citrux&apos; sending marketing communications related
+  344:                   to citrux
+  345                  </div>

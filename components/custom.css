@@ -1,0 +1,5 @@
+@media (min-width: 1000px) {
+  .md\:w-12 {
+    width: 6rem /* 56px */;
+  }
+}
