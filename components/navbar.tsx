@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AlignJustify, X } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -25,6 +26,7 @@ const Navbar = ({
   scrollToServices, // Add scrollToServices to props
 }: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
+  
 
   const toggleDropDown = () => {
     setIsDropDownVisible(!isDropDownVisible);
@@ -40,12 +42,12 @@ const Navbar = ({
         <div>
           <Link className="cursor-pointer" href="/">
           <Image
-              priority
-              src="https://assets.citrux.in/images/citrux_dark_logo.svg"
-              alt="Logo"
-              width={100}
-              height={100}
-              className="w-10 h-10 md:w-14 md:h-14"
+             priority
+             src="https://assets.citrux.in/images/citrux_dark_logo.svg"
+             alt="Logo"
+             width={200} // Increased width
+             height={200} // Increased height
+             className="w-20 h-20 md:w-32 md:h-32" // Adjusted tailwind classes
             />
             
           </Link>
@@ -72,8 +74,8 @@ const Navbar = ({
             Brands
           </div>
 
-          <Link href="/pricing" className="hover:text-gray-50">
-            Pricing
+          <Link href="/Careers" className="hover:text-gray-50">
+            Careers
           
           </Link>
         </div>

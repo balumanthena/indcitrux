@@ -1,5 +1,6 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { PiAppStoreLogo, PiAppWindowLight, PiHeadsetFill,  PiMegaphone, PiMonitor, PiStorefront } from "react-icons/pi";
+import { MonitorSmartphone, ShoppingCart, Palette, Megaphone, Smartphone, Headphones } from "lucide-react";
 
 
 
@@ -12,21 +13,21 @@ export function CardHoverEffectDemo() {
 }
 export const projects = [
     {
-        icon : <div className="bg-blue-100 p-4 rounded-full"><PiMonitor className="w-8 h-8 text-blue-600" /></div>,
+        icon : <div className="bg-blue-100 p-4 rounded-full"><MonitorSmartphone className="w-8 h-8 text-blue-600" /></div>,
         title: "Website Design",
         description:
           "We build fully responsive websites that look great on all devices. Our websites are designed to convert visitors into customers.",
       
       },
       {
-        icon : <div className="bg-blue-100 p-4 rounded-full"><PiStorefront className="w-8 h-8 text-blue-600" /></div>,
+        icon : <div className="bg-blue-100 p-4 rounded-full"><ShoppingCart className="w-8 h-8 text-blue-600" /></div>,
         title: "E-commerce Store",
         description:
           "From small stores to large online retailers, we have the expertise to build a store that will help you grow your business.",
        
       },
       {
-        icon : <div className="bg-blue-100 p-4 rounded-full"><PiAppWindowLight className="w-8 h-8 text-blue-600" /></div>,
+        icon : <div className="bg-blue-100 p-4 rounded-full"><Palette className="w-8 h-8 text-blue-600" /></div>,
         title: "UI / UX",
         description:
           "We design intuitive, user-friendly interfaces that grow with your business and delight your customers.",

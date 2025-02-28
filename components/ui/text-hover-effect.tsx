@@ -117,7 +117,7 @@ export function TextHoverEffect({
         mask="url(#textMask)"
         className="font-[helvetica] font-bold fill-transparent text-7xl  "
       >
-        {"CITRUX"}
+        {"CitrUX"}
       </text>
     </svg>
   );

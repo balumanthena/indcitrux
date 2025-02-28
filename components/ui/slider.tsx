@@ -3,6 +3,9 @@
 import Slider from "react-slick";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

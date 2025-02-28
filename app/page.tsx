@@ -25,6 +25,7 @@ export default function Home() {
   const closeDropdown = () => {
     setDropdownVisible(false);
   };
+  
 
   const websiteDesignRef = useRef<HTMLDivElement>(null);
   const graphicDesignRef = useRef<HTMLDivElement>(null);
