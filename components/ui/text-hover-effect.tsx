@@ -82,7 +82,7 @@ export function TextHoverEffect({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        strokeWidth="0.3"
+        strokeWidth="1"
         className="font-[helvetica] font-bold stroke-neutral-200 dark:stroke-neutral-800 fill-transparent text-7xl  "
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
@@ -113,7 +113,7 @@ export function TextHoverEffect({
         textAnchor="middle"
         dominantBaseline="middle"
         stroke="url(#textGradient)"
-        strokeWidth="0.3"
+        strokeWidth="1"
         mask="url(#textMask)"
         className="font-[helvetica] font-bold fill-transparent text-7xl  "
       >
