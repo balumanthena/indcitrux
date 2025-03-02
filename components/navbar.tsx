@@ -41,25 +41,25 @@ const Navbar = ({
         isScrolled ? "bg-black shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="flex items-center justify-between px-4 py-3">
+      <div className="flex items-center justify-between px-4 py-3"> {/* Keeping navbar padding same */}
         {/* Logo */}
-        <div>
+        <div className="flex items-center">
           <Link href="/" className="cursor-pointer">
             <Image
               priority
               src="https://assets.citrux.in/images/citrux_dark_logo.svg"
               alt="Logo"
-              width={170}
-              height={170}
-              className="w-18 h-18 md:w-26 md:h-26"
+              width={120}  // Slightly reduced width
+              height={40}  // Auto-scaled height
+              className="h-auto w-[120px] md:w-[140px]" // Responsive for different screens
             />
           </Link>
         </div>
 
         {/* Navigation Links (Desktop) */}
-        <div className="hidden md:flex space-x-8 items-center text-slate-300 text-center">
+        <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
           <div onClick={scrollToWebsiteDesign} className="hover:text-gray-50 cursor-pointer">
-          Product Design
+            Product Design
           </div>
           <div onClick={scrollToGraphicDesign} className="hover:text-gray-50 cursor-pointer">
             Artificial Intelligence
@@ -112,5 +112,6 @@ const Navbar = ({
 };
 
 export default Navbar;
+
 
 
