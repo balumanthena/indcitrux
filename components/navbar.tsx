@@ -1,21 +1,16 @@
 "use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { AlignJustify, X } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation";
-
 import Image from "next/image";
 import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
-import { TracingBeam } from "./ui/tracing-beam";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 interface NavbarProps {
   scrollToWebsiteDesign: () => void;
   scrollToGraphicDesign: () => void;
   scrollToShopifyStores: () => void;
   scrollToBrands: () => void;
-  scrollToServices: () => void; // Define scrollToServices function
+  scrollToServices: () => void;
 }
 
 const Navbar = ({
@@ -23,75 +18,69 @@ const Navbar = ({
   scrollToGraphicDesign,
   scrollToShopifyStores,
   scrollToBrands,
-  scrollToServices, // Add scrollToServices to props
+  scrollToServices,
 }: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
-  
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const toggleDropDown = () => {
-    setIsDropDownVisible(!isDropDownVisible);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
 
-  const closeDropDown = () => {
-    setIsDropDownVisible(false);
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const toggleDropDown = () => setIsDropDownVisible(!isDropDownVisible);
+  const closeDropDown = () => setIsDropDownVisible(false);
 
   return (
-    <div>
-      <div className="p-6 md:p-10 flex items-center justify-between z-50">
+    <div
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
+        isScrolled ? "bg-black shadow-md" : "bg-transparent"
+      }`}
+    >
+      <div className="flex items-center justify-between px-4 py-3">
+        {/* Logo */}
         <div>
-          <Link className="cursor-pointer" href="/">
-          <Image
-             priority
-             src="https://assets.citrux.in/images/citrux_dark_logo.svg"
-             alt="Logo"
-             width={200} // Increased width
-             height={200} // Increased height
-             className="w-20 h-20 md:w-32 md:h-32" // Adjusted tailwind classes
+          <Link href="/" className="cursor-pointer">
+            <Image
+              priority
+              src="https://assets.citrux.in/images/citrux_dark_logo.svg"
+              alt="Logo"
+              width={170}
+              height={170}
+              className="w-18 h-18 md:w-26 md:h-26"
             />
-            
           </Link>
         </div>
-        <div
-          className="cursor-pointer hidden 
-            md:flex space-x-10 items-center
-             text-slate-300 text-center 
-             bg-clip-text text-transparent 
-             bg-gradient-to-b from-neutral-50
-              to bg-neutral-400 bg-opacity-50"
-        >
-          <div onClick={scrollToWebsiteDesign} className="hover:text-gray-50">
-            Website Design
-          </div>
-          <div onClick={scrollToGraphicDesign} className="hover:text-gray-50">
-            Graphic Design
-          </div>
 
-          <div onClick={scrollToShopifyStores} className="hover:text-gray-50">
-            WooCommerce Stores
+        {/* Navigation Links (Desktop) */}
+        <div className="hidden md:flex space-x-8 items-center text-slate-300 text-center">
+          <div onClick={scrollToWebsiteDesign} className="hover:text-gray-50 cursor-pointer">
+          Product Design
           </div>
-          <div onClick={scrollToBrands} className="hover:text-gray-50">
+          <div onClick={scrollToGraphicDesign} className="hover:text-gray-50 cursor-pointer">
+            Artificial Intelligence
+          </div>
+          <div onClick={scrollToShopifyStores} className="hover:text-gray-50 cursor-pointer">
+            Quick Commerce
+          </div>
+          <div onClick={scrollToBrands} className="hover:text-gray-50 cursor-pointer">
             Brands
           </div>
-
           <Link href="/Careers" className="hover:text-gray-50">
             Careers
-          
           </Link>
         </div>
 
+        {/* Mobile Menu */}
         <div className="flex md:hidden">
           {isDropDownVisible ? (
-            // display an x icon when the drop is visible
-            <div
-              onClick={toggleDropDown}
-              className="w-8 h-8 text-slate-300 cursor-pointer"
-            >
+            <div onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer">
               <X />
-              <DropDownMenu
-                onClose={closeDropDown}
-                scrollToServices={scrollToServices} // Pass scrollToServices
-              />
+              <DropDownMenu onClose={closeDropDown} scrollToServices={scrollToServices} />
             </div>
           ) : (
             <AlignJustify
@@ -101,16 +90,17 @@ const Navbar = ({
           )}
         </div>
 
+        {/* Contact Button */}
         <div className="hidden md:flex">
           <Link
             href="/contact"
             className="
-            inline-flex h-12 animate-shimmer items-center justify-center 
-            rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
-            bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors
-             focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2
+              inline-flex h-10 items-center justify-center 
+              rounded-md border border-slate-800 
+              bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
+              bg-[length:200%_100%] px-4 font-medium text-slate-400 transition-colors
+              focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2
               focus:ring-offset-slate-50
-
             "
           >
             Contact
@@ -122,3 +112,5 @@ const Navbar = ({
 };
 
 export default Navbar;
+
+

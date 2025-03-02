@@ -7,6 +7,10 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRef } from "react";
 
+
+
+
+
 const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSd1wTtouug0gtOWF4pJ5mbL4jG7qVYKXGxE5sP9bCZNz_gVmA/viewform?usp=sharing";
 
 const internships = [
@@ -82,14 +86,15 @@ const Careers = () => {
               scrollToServices={() => {}} />
 
       {/* Header Section */}
-      <div className="text-center py-16 px-6">
-        <h1 className="text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
-          Join Our Internship Program 🚀
-        </h1>
-        <p className="text-lg text-gray-300">
-          Gain hands-on experience, work with industry experts, and kickstart your career!
-        </p>
-      </div>
+      <div className="text-center pt-48 py-16 px-6">
+  <h1 className="text-5xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
+    Join Our Internship Program 🚀
+  </h1>
+  <p className="text-lg text-gray-300">
+    Gain hands-on experience, work with industry experts, and kickstart your career!
+  </p>
+</div>
+
 
       {/* Internship Cards Section */}
       <div className="container mx-auto grid md:grid-cols-3 gap-8 px-6">

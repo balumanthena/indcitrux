@@ -9,9 +9,7 @@ import { Tabs } from "@/components/ui/tabs";
 const Services = () => {
     return ( <div className="max-w-5xl mx-auto py-20">
    
-        <div className="text-4xl pb-5 md:text-7xl text-center
-         bg-clip-text text-transparent bg-gradient-to-b
-          from-blue-500 to-neutral-50 bg-opacity-50 mt-20">
+        <div className="text-4xl md:text-7xl  text-center text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to bg-neutral-400 bg-opacity-50">
           Streamline your business with our services
         </div>
         <p className="mt-4 text-lg font-normal
