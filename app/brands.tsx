@@ -41,7 +41,7 @@ const Brands = () => {
   return (
     <div>
       <div className=" p-4   mx-auto relative z-10  w-full pt-20 md:pt-32">
-        <div className="text-4xl md:text-7xl  text-center text-transparent bg-clip-text bg-gradient-to-b from-neutral-50 to bg-neutral-400 bg-opacity-50">
+        <div className="text-4xl md:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 drop-shadow-lg">
           The best brands <br /> choose us
         </div>
 

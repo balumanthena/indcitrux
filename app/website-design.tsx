@@ -10,7 +10,7 @@ const DesignShowcase = () => {
         <div className="text-white">
             {/* UI/UX Visual Design Section */}
             <div className="p-4 mx-auto relative z-10 w-full pt-10 md:pt-20 px-2">
-                <h1 className="text-4xl md:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to bg-neutral-400 bg-opacity-50">
+                <h1 className="text-4xl md:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500 drop-shadow-lg">
                     UI/UX <br /> Product Design
                 </h1>
                 <p className="mt-4 text-lg font-normal text-neutral-300 max-w-lg text-center mx-auto px-4">
