@@ -1,5 +1,5 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
-import { MonitorSmartphone, ShoppingCart, Palette, Megaphone, Smartphone, Headphones, FileText } from "lucide-react";
+import { MonitorSmartphone, ShoppingCart, Palette, Heart, Megaphone, Smartphone, Headphones, FileText } from "lucide-react";
 
 export function CardHoverEffectDemo() {
   return (
@@ -43,12 +43,12 @@ export const projects = [
   {
     icon: (
       <div className="bg-gradient-to-br from-red-500 to-orange-500 p-5 rounded-xl shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl">
-        <FileText className="w-12 h-12 text-white stroke-2" />
+        <Heart className="w-12 h-12 text-white stroke-2" />
       </div>
     ),
-    title: "Print Media & Branding",
+    title: "Health Service",
     description:
-      "We design premium brochures, business cards, banners, and branding materials for a strong visual identity.",
+      "We provide all R1 and RCM service with excellent output.",
   },
   {
     icon: (

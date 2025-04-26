@@ -15,7 +15,7 @@ const Book = () => {
           scrollToBrands={() => {}}
           scrollToServices={() => {}}
         />
-        <div className="text-4xl pb-5 md:text-6xl text-center 
+        <div className="text-4xl pt-24 pb-5 md:text-6xl text-center 
         bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
           Book a meeting
         </div>
