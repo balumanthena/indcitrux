@@ -14,7 +14,7 @@ const font = Poppins(
   );
 
 export const metadata: Metadata = {
-  title: "Ind Citrux Pvt Ltd",
+  title: "Citrux Technologies",
   description: "At Citrux, we build innovative digital solutions—ranging from full-stack apps to AI tools—designed to boost efficiency and user experience. We also offer expert healthcare services, including medical coding, RCM, and workflow optimization for providers.",
 };
 
