@@ -25,7 +25,7 @@ const FAQS = () => {
             </AccordionTrigger>
             <AccordionContent>
               Citrux is a full-fledged marketing agency that specializes in
-              branding, web design, and digital marketing.
+              branding, web design, and digital marketing,  and health services including medical coding and RCM solutions..
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -57,12 +57,24 @@ const FAQS = () => {
         </Accordion>
       </div>
 
-      {/* Footer Section */}
-      <footer className="bg-[#e0e0e0] text-black py-6 mt-10 rounded-b-3xl">
-        <div className="container mx-auto px-6 md:px-20 text-center">
-          <div className="text-sm hover:text-[#6e76ff] transition-colors duration-300">
-            © {new Date().getFullYear()} Citrux. All Rights Reserved.
+      {/* Stylish Footer Section */}
+      <footer className="bg-[#1a1a1a] text-white py-10 mt-10 rounded-b-3xl">
+        <div className="container mx-auto px-6 md:px-20 grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <h3 className="text-lg font-semibold text-[#6e76ff] mb-2">IND CITRUX PVT LTD</h3>
+            <p className="leading-relaxed">
+              2nd Floor, IT Tower, Siddipet<br />
+              Siddipet, Telangana, India
+            </p>
           </div>
+          <div>
+            <h3 className="text-lg font-semibold text-[#6e76ff] mb-2">Contact</h3>
+            <p>Email: <a href="mailto:info@citrux.in" className="text-[#6e76ff] hover:underline">info@citrux.in</a></p>
+            <p>Phone: <a href="tel:+918555954798" className="text-[#6e76ff] hover:underline">+91 8555 954 798</a></p>
+          </div>
+        </div>
+        <div className="text-center text-xs text-gray-400 mt-6">
+          © {new Date().getFullYear()} IND CITRUX PVT LTD. All Rights Reserved.
         </div>
       </footer>
     </div>

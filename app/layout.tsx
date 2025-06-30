@@ -14,8 +14,8 @@ const font = Poppins(
   );
 
 export const metadata: Metadata = {
-  title: "Citrux",
-  description: "At Citrux, we specialize in building cutting-edge digital solutions that drive business success. From full-stack web applications to AI-driven tools, we craft innovative software that enhances user experience and maximizes efficiency.",
+  title: "Ind Citrux Pvt Ltd",
+  description: "At Citrux, we build innovative digital solutions—ranging from full-stack apps to AI tools—designed to boost efficiency and user experience. We also offer expert healthcare services, including medical coding, RCM, and workflow optimization for providers.",
 };
 
 export default function RootLayout({
