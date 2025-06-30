@@ -106,6 +106,7 @@ const SliderOne = () => {
                       "
             />
           </div>
+          
         </>
       </Slider>
     </div>
