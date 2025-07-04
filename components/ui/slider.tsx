@@ -6,7 +6,6 @@ import { useMediaQuery } from "react-responsive";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -41,9 +40,7 @@ const SliderOne = () => {
               alt="logo"
               width={500}
               height={500}
-              className="
-                  rounded-2xl
-                      "
+              className="rounded-2xl"
             />
           </div>
         </>
@@ -56,9 +53,7 @@ const SliderOne = () => {
               alt="logo"
               width={500}
               height={500}
-              className="
-                  rounded-2xl 
-                      "
+              className="rounded-2xl"
             />
           </div>
         </>
@@ -71,9 +66,7 @@ const SliderOne = () => {
               alt="logo"
               width={500}
               height={500}
-              className="
-                  rounded-2xl 
-                      "
+              className="rounded-2xl"
             />
           </div>
         </>
@@ -86,9 +79,7 @@ const SliderOne = () => {
               alt="logo"
               width={500}
               height={500}
-              className="
-                  rounded-2xl 
-                      "
+              className="rounded-2xl"
             />
           </div>
         </>
@@ -101,12 +92,23 @@ const SliderOne = () => {
               alt="logo"
               width={500}
               height={500}
-              className="
-                  rounded-2xl 
-                      "
+              className="rounded-2xl"
             />
           </div>
-          
+        </>
+
+        {/* Added extra image */}
+        <>
+          <div className="rounded-md px-2 md:p-10">
+            <Image
+              priority
+              src="/images/new-image.jpeg"  // <-- Your new image path here
+              alt="new logo"
+              width={500}
+              height={500}
+              className="rounded-2xl"
+            />
+          </div>
         </>
       </Slider>
     </div>
