@@ -3,11 +3,12 @@
 import Head from "next/head";
 import Link from "next/link";
 import { PiCheckCircleFill } from "react-icons/pi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navbar from "@/components/navbar";
 
-const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSd1wTtouug0gtOWF4pJ5mbL4jG7qVYKXGxE5sP9bCZNz_gVmA/viewform?usp=sharing";
+const googleFormLink =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd1wTtouug0gtOWF4pJ5mbL4jG7qVYKXGxE5sP9bCZNz_gVmA/viewform?usp=sharing";
 
 const internships = [
   {
@@ -64,7 +65,8 @@ const faqs = [
   },
   {
     question: "Will I receive a certificate?",
-    answer: "Yes, all interns receive a certificate upon successful completion of the internship.",
+    answer:
+      "Yes, all interns receive a certificate upon successful completion of the internship.",
   },
   {
     question: "How can I apply?",
@@ -80,7 +82,12 @@ const Careers = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] text-white antialiased">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] text-white antialiased"
+    >
       <Head>
         <title>Join Our Internship Program | Balu Tech Crop</title>
         <meta
@@ -101,65 +108,75 @@ const Careers = () => {
         scrollToServices={() => {}}
       />
 
-      {/* Header Section */}
-      <div className="text-center pt-48 py-16 px-6">
-        <h1 className="text-6xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 animate-pulse">
-          Join Our Internship Program 🚀
-        </h1>
-        <p className="text-xl text-gray-400 tracking-wide">
-          Gain hands-on experience, work with industry experts, and kickstart your career!
+      {/* Careers Section Header */}
+      <section className="pt-24 pb-16 px-6 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center">
+        <h4 className="uppercase text-sm tracking-wide text-purple-300">CAREERS</h4>
+        <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">Careers</h1>
+        <p className="max-w-2xl mx-auto mt-4 text-white/80 text-lg md:text-xl">
+          Join our mission-driven team and grow your career with real-world experience, guidance, and innovation.
         </p>
-      </div>
+      </section>
 
       {/* Internship Cards Section */}
-      <div className="container mx-auto grid md:grid-cols-3 gap-8 px-6">
-        {internships.map((internship) => (
-          <motion.div
-            key={internship.name}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className={`relative flex flex-col justify-between rounded-3xl p-6 bg-opacity-50 backdrop-blur-2xl border border-white/30 shadow-xl transition-all duration-300
-                        bg-gradient-to-br ${internship.color} hover:shadow-2xl hover:border-cyan-400 hover:from-green-400 hover:to-blue-500`}
-          >
-            {/* Overlay for better readability */}
-            <div className="absolute inset-0 bg-black/30 rounded-3xl z-0 pointer-events-none" />
-            <div className="relative z-10">
-              <h2 className="text-4xl font-extrabold mb-2 tracking-wide">
-                {internship.name}
-              </h2>
-              <p className="text-lg text-gray-200 font-semibold">
-                {internship.duration}
-              </p>
-              <p className="mt-4 text-gray-300 leading-relaxed">
-                {internship.description}
-              </p>
-              <ul className="mt-4">
-                {internship.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-lg py-1">
-                    <PiCheckCircleFill className="text-green-400 mr-2" />
-                    <span className="text-gray-100 font-medium">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={googleFormLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 block py-3 text-lg text-center bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-500 hover:to-purple-500 rounded-full text-white shadow-lg transition-all duration-300"
-              >
-                Apply Now
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-       {/* YouTube Video Section */}
-       <div className="container mx-auto text-center py-16 px-6">
+      <section className="pt-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+          className="container mx-auto grid md:grid-cols-3 gap-8 px-6"
+        >
+          {internships.map((internship, index) => (
+            <motion.div
+              key={internship.name}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              className="relative flex flex-col justify-between rounded-xl p-6 bg-white/5 backdrop-blur-md border border-white/10 shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className="relative z-10">
+                <h2 className="text-2xl font-semibold mb-1 text-white">{internship.name}</h2>
+                <p className="text-sm text-gray-400 mb-4">{internship.duration}</p>
+                <p className="text-gray-300 mb-4 text-sm">{internship.description}</p>
+                <ul className="space-y-2 text-sm text-gray-200 mb-4">
+                  {internship.features.map((feature) => (
+                    <li key={feature} className="flex items-center">
+                      <PiCheckCircleFill className="text-green-400 mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <motion.a
+                  href={googleFormLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="inline-block w-full text-center py-2 rounded-md bg-white text-gray-900 font-medium hover:bg-gray-200 transition"
+                >
+                  Apply Now
+                </motion.a>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* YouTube Video Section */}
+      <div className="container mx-auto text-center py-16 px-6">
         <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
           Learn More About Our Internships
         </h2>
         <motion.div
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
           className="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg"
         >
@@ -190,36 +207,36 @@ const Careers = () => {
               className={`rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 shadow-xl border border-gray-700 backdrop-blur-xl transition-all duration-300 ${
                 openFAQ === index ? "shadow-2xl border-cyan-400" : ""
               }`}
+              layout
             >
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex justify-between items-center p-6 text-left text-xl font-bold text-white hover:bg-gray-800 transition-all"
               >
                 {faq.question}
-                <span className="text-2xl">
-                  {openFAQ === index ? "−" : "+"}
-                </span>
+                <span className="text-2xl">{openFAQ === index ? "−" : "+"}</span>
               </button>
-              {openFAQ === index && (
-                <motion.div
-                  initial={{ height: 0 }}
-                  animate={{ height: "auto" }}
-                  exit={{ height: 0 }}
-                  className="overflow-hidden"
-                >
-                  <div className="p-6 text-gray-300">{faq.answer}</div>
-                </motion.div>
-              )}
+
+              <AnimatePresence initial={false}>
+                {openFAQ === index && (
+                  <motion.div
+                    key="answer"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-6 text-gray-300">{faq.answer}</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default Careers;
-
-
-
-

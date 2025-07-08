@@ -1,5 +1,7 @@
 "use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const stores = [
   {
@@ -13,7 +15,6 @@ const stores = [
       "We had no idea how to get started, but Citrux showed us the way. And we were able to create something amazing.",
     name: "John Prency",
   },
-
   {
     image: "/images/s-2.webp",
     quote:
@@ -24,46 +25,49 @@ const stores = [
 
 const ShopifyStores = () => {
   return (
-    <section
-      className=" mt-10 md:py-10 bg-[#f6f5f4] w-full
-    rounded-3xl
-  
-  "
-    >
-      <div className=" p-4   mx-auto relative z-10  w-full ">
-        <div className="text-4xl py-10 md:pb-8 md:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 to-neutral-500 bg-opacity-50">
-          Quick Commerce Stores <br />
-        </div>
+    <section className="mt-16 py-20 bg-[#f6f5f4] rounded-3xl">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Heading */}
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center text-4xl md:text-6xl font-bold bg-gradient-to-b from-neutral-800 to-neutral-500 bg-clip-text text-transparent"
+        >
+          Quick Commerce Stores
+        </motion.h2>
 
-        <p className="mt-4 text-lg font-normal  text-neutral-800 max-w-lg text-center mx-auto">
-          We create stunning E-Commerce stores that are designed to convert.
+        {/* Subtext */}
+        <p className="mt-6 text-lg text-neutral-700 text-center max-w-xl mx-auto">
+          We create stunning e-commerce stores that are designed to convert.
         </p>
-        <div className="md:flex items-center justify-center  px-10 ">
+
+        {/* Cards */}
+        <div className="mt-16 grid gap-12 md:grid-cols-3">
           {stores.map((store, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex flex-col items-center justify-center mt-10 md:w-2/3 mx-auto"
+              className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              viewport={{ once: true }}
             >
-              <div className="flex flex-col items-center justify-center ">
-                <Image
-                  src={store.image}
-                  alt="shopify store"
-                  width={400}
-                  height={400}
-                  className="rounded-lg mx-auto"
-                />
-                <p className="text-neutral-800 font-bold text-lg mt-4 text-center ">
-                  &quot;{store.quote}&quot;
-                </p>
-                <p className="text-neutral-800 font-bold text-lg mt-4">
-                  {" "}
-                  - {store.name}
-                </p>
-              </div>
-            </div>
+              <Image
+                src={store.image}
+                alt={`Store by ${store.name}`}
+                width={360}
+                height={240}
+                className="rounded-md object-cover shadow-md mb-4"
+              />
+              <p className="italic text-neutral-600 mb-3 text-sm">
+                “{store.quote}”
+              </p>
+              <p className="font-semibold text-neutral-900">— {store.name}</p>
+            </motion.div>
           ))}
         </div>
-        
       </div>
     </section>
   );

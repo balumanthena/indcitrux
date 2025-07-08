@@ -41,7 +41,7 @@ const Navbar = ({
         isScrolled ? "bg-black shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="flex items-center justify-between px-4 py-3"> {/* Keeping navbar padding same */}
+      <div className="flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="cursor-pointer">
@@ -49,9 +49,9 @@ const Navbar = ({
               priority
               src="https://assets.citrux.in/images/citrux_dark_logo.svg"
               alt="Logo"
-              width={120}  // Slightly reduced width
-              height={40}  // Auto-scaled height
-              className="h-auto w-[120px] md:w-[140px]" // Responsive for different screens
+              width={120}
+              height={40}
+              className="h-auto w-[120px] md:w-[140px]"
             />
           </Link>
         </div>
@@ -70,6 +70,12 @@ const Navbar = ({
           <div onClick={scrollToBrands} className="hover:text-gray-50 cursor-pointer">
             Brands
           </div>
+
+          {/* ✅ New Services Link */}
+          <Link href="/services" className="hover:text-gray-50">
+            Services
+          </Link>
+
           <Link href="/Careers" className="hover:text-gray-50">
             Careers
           </Link>
@@ -80,7 +86,7 @@ const Navbar = ({
           {isDropDownVisible ? (
             <div onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer">
               <X />
-              <DropDownMenu onClose={closeDropDown} scrollToServices={scrollToServices} />
+              <DropDownMenu onClose={closeDropDown} scrollToservices={scrollToServices} />
             </div>
           ) : (
             <AlignJustify
@@ -112,6 +118,5 @@ const Navbar = ({
 };
 
 export default Navbar;
-
 
 

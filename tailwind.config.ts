@@ -73,34 +73,39 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        'spotlight': {
+        spotlight: {
           "0%": {
-            opacity: '0',
+            opacity: "0",
             transform: "translate(-72%, -62%) scale(0.5)",
           },
           "100%": {
-            opacity: '1',
+            opacity: "1",
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
-        'shimmer': {
+        shimmer: {
           from: {
-            "backgroundPosition": "0 0"
+            backgroundPosition: "0 0",
           },
           to: {
-            "backgroundPosition": "-200% 0"
-          }
+            backgroundPosition: "-200% 0",
+          },
         },
-        'scroll': {
+        scroll: {
           to: {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
+
+        // ✅ Gradient animated keyframe
+        gradientBG: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "primary-gradient":
           "linear-gradient(92.88deg, rgb(69, 94, 181) 9.16%, rgb(86, 67, 204) 43.89%, rgb(103, 63, 215) 64.72%)",
         "page-gradient":
@@ -119,9 +124,17 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'spotlight': "spotlight 2s ease .75s 1 forwards",
-        'shimmer': "shimmer 2s linear infinite",
-        'scroll': 'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite'
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+        shimmer: "shimmer 2s linear infinite",
+        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+
+        // ✅ UI/UX design enhancements
+        "spin-slow": "spin 4s linear infinite",
+        "bounce-slow": "bounce 2.5s infinite",
+        "pulse-slow": "pulse 3s ease-in-out infinite",
+
+        // ✅ Gradient animation
+        gradient: "gradientBG 5s ease infinite",
       },
     },
   },
@@ -131,10 +144,12 @@ const config: Config = {
   ],
 };
 
-// Function to add variables for colors
+// ✅ Auto-create CSS variables for Tailwind colors
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
 
   addBase({
     ":root": newVars,
@@ -142,5 +157,3 @@ function addVariablesForColors({ addBase, theme }: any) {
 }
 
 export default config;
-
-
