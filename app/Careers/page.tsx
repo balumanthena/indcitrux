@@ -101,11 +101,6 @@ const Careers = () => {
       </Head>
 
       <Navbar
-        scrollToWebsiteDesign={() => {}}
-        scrollToGraphicDesign={() => {}}
-        scrollToShopifyStores={() => {}}
-        scrollToBrands={() => {}}
-        scrollToServices={() => {}}
       />
 
       {/* Careers Section Header */}

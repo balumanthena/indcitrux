@@ -11,11 +11,7 @@ const ServicesClient = dynamic(() => import('./ServicesClient'), {
 export default function ServicesPage() {
   return (
     <>
-      <Navbar scrollToWebsiteDesign={() => {}}
-  scrollToGraphicDesign={() => {}}
-  scrollToShopifyStores={() => {}}
-  scrollToBrands={() => {}}
-  scrollToServices={() => {}}/>
+      <Navbar/>
       <Suspense fallback={<div className="text-white text-center py-20">Loading Services...</div>}>
         <ServicesClient />
       </Suspense>

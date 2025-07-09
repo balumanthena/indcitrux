@@ -5,21 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
 
-interface NavbarProps {
-  scrollToWebsiteDesign: () => void;
-  scrollToGraphicDesign: () => void;
-  scrollToShopifyStores: () => void;
-  scrollToBrands: () => void;
-  scrollToServices: () => void;
-}
-
-const Navbar = ({
-  scrollToWebsiteDesign,
-  scrollToGraphicDesign,
-  scrollToShopifyStores,
-  scrollToBrands,
-  scrollToServices,
-}: NavbarProps) => {
+const Navbar = () => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -31,6 +17,13 @@ const Navbar = ({
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const toggleDropDown = () => setIsDropDownVisible(!isDropDownVisible);
   const closeDropDown = () => setIsDropDownVisible(false);
@@ -58,20 +51,20 @@ const Navbar = ({
 
         {/* Navigation Links (Desktop) */}
         <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
-          <div onClick={scrollToWebsiteDesign} className="hover:text-gray-50 cursor-pointer">
+          <div onClick={() => scrollToSection("website-design")} className="hover:text-gray-50 cursor-pointer">
             Product Design
           </div>
-          <div onClick={scrollToGraphicDesign} className="hover:text-gray-50 cursor-pointer">
+          <div onClick={() => scrollToSection("graphic-design")} className="hover:text-gray-50 cursor-pointer">
             Artificial Intelligence
           </div>
-          <div onClick={scrollToShopifyStores} className="hover:text-gray-50 cursor-pointer">
+          <div onClick={() => scrollToSection("shopify-stores")} className="hover:text-gray-50 cursor-pointer">
             Quick Commerce
           </div>
-          <div onClick={scrollToBrands} className="hover:text-gray-50 cursor-pointer">
+          <div onClick={() => scrollToSection("brands")} className="hover:text-gray-50 cursor-pointer">
             Brands
           </div>
 
-          {/* ✅ New Services Link */}
+          {/* ✅ Link to Services Page */}
           <Link href="/services" className="hover:text-gray-50">
             Services
           </Link>
@@ -86,7 +79,7 @@ const Navbar = ({
           {isDropDownVisible ? (
             <div onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer">
               <X />
-              <DropDownMenu onClose={closeDropDown} scrollToservices={scrollToServices} />
+              <DropDownMenu onClose={closeDropDown} scrollToservices={() => scrollToSection("services")} />
             </div>
           ) : (
             <AlignJustify
@@ -100,14 +93,10 @@ const Navbar = ({
         <div className="hidden md:flex">
           <Link
             href="/contact"
-            className="
-              inline-flex h-10 items-center justify-center 
-              rounded-md border border-slate-800 
+            className="inline-flex h-10 items-center justify-center rounded-md border border-slate-800 
               bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] 
               bg-[length:200%_100%] px-4 font-medium text-slate-400 transition-colors
-              focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2
-              focus:ring-offset-slate-50
-            "
+              focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
           >
             Contact
           </Link>
