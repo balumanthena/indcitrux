@@ -6,8 +6,7 @@ import { PiCheckCircleFill } from "react-icons/pi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navbar from "@/components/navbar";
-import Footer from '@/components/footer';
-
+import Footer from "@/components/footer";
 
 const googleFormLink =
   "https://docs.google.com/forms/d/e/1FAIpQLSd1wTtouug0gtOWF4pJ5mbL4jG7qVYKXGxE5sP9bCZNz_gVmA/viewform?usp=sharing";
@@ -78,13 +77,16 @@ const faqs = [
 
 const Careers = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] text-white antialiased">
+    <div className="w-full min-h-screen bg-gray-950 text-white antialiased relative overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-700 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
+      <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-indigo-600 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
+
       <Head>
         <title>Join Our Internship Program | Balu Tech Crop</title>
         <meta
@@ -100,7 +102,7 @@ const Careers = () => {
       <Navbar />
 
       {/* Header */}
-      <section className="pt-24 pb-16 px-6 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center">
+      <section className="pt-24 pb-16 px-6 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center z-10 relative">
         <h4 className="uppercase text-sm tracking-wide text-purple-300">CAREERS</h4>
         <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">Careers</h1>
         <p className="max-w-2xl mx-auto mt-4 text-white/80 text-lg md:text-xl">
@@ -109,7 +111,7 @@ const Careers = () => {
       </section>
 
       {/* Internship Cards */}
-      <section className="pt-10">
+      <section className="pt-10 z-10 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -131,11 +133,11 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{ scale: 1.03 }}
-              className="relative flex flex-col justify-between rounded-xl p-6 bg-white/5 backdrop-blur-md border border-white/10 shadow-sm hover:shadow-lg transition-all duration-300"
+              className="relative flex flex-col justify-between rounded-xl p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-purple-700/30 shadow-md backdrop-blur-xl hover:shadow-purple-500/30 transition-all duration-300"
             >
               <div className="relative z-10">
                 <h2 className="text-2xl font-semibold mb-1 text-white">{internship.name}</h2>
-                <p className="text-sm text-gray-400 mb-4">{internship.duration}</p>
+                <p className="text-sm text-purple-400 mb-4">{internship.duration}</p>
                 <p className="text-gray-300 mb-4 text-sm">{internship.description}</p>
                 <ul className="space-y-2 text-sm text-gray-200 mb-4">
                   {internship.features.map((feature) => (
@@ -151,7 +153,7 @@ const Careers = () => {
                   rel="noopener noreferrer"
                   whileTap={{ scale: 0.97 }}
                   whileHover={{ scale: 1.02 }}
-                  className="inline-block w-full text-center py-2 rounded-md bg-white text-gray-900 font-medium hover:bg-gray-200 transition"
+                  className="inline-block w-full text-center py-2 rounded-md bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   Apply Now
                 </motion.a>
@@ -162,8 +164,8 @@ const Careers = () => {
       </section>
 
       {/* YouTube Section */}
-      <div className="container mx-auto text-center py-16 px-6">
-        <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
+      <div className="container mx-auto text-center py-16 px-6 relative z-10">
+        <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
           Learn More About Our Internships
         </h2>
         <motion.div
@@ -184,7 +186,7 @@ const Careers = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="container mx-auto py-16 px-6">
+      <div className="container mx-auto py-16 px-6 relative z-10">
         <h2 className="text-4xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 animate-pulse">
           Frequently Asked Questions
         </h2>
@@ -196,7 +198,7 @@ const Careers = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className={`rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 shadow-xl border border-gray-700 backdrop-blur-xl transition-all duration-300 ${
-                openFAQ === index ? "shadow-2xl border-cyan-400" : ""
+                openFAQ === index ? "shadow-2xl border-purple-400" : ""
               }`}
               layout
             >
@@ -226,6 +228,7 @@ const Careers = () => {
           ))}
         </div>
       </div>
+
       <Footer />
     </div>
   );

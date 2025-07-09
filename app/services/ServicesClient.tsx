@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Head from 'next/head';
 import Footer from '@/components/footer';
 
-
 type Service = {
   name: string;
   description: string;
@@ -128,7 +127,7 @@ export default function ServicesClient() {
           variants={containerVariants}
           initial="hidden"
           animate="show"
-          className="flex flex-wrap justify-center gap-4 mt-8"
+          className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-8"
         >
           {services.map((service) => (
             <motion.div key={service.name} variants={itemVariants}>
@@ -175,7 +174,7 @@ function ServiceButton({
     <button
       onClick={onClick}
       aria-pressed={isSelected}
-      className={`px-6 py-2 rounded-full border transition-all duration-300 backdrop-blur-md shadow-lg ${
+      className={`w-full sm:w-auto text-center px-6 py-2 rounded-full border transition-all duration-300 backdrop-blur-md shadow-lg ${
         isSelected
           ? 'bg-white text-gray-900 font-semibold shadow-purple-500/50'
           : 'border-white text-white hover:bg-white hover:text-gray-900 hover:shadow-lg hover:shadow-purple-500/40'
