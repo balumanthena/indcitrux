@@ -127,7 +127,7 @@ export default function AboutPage() {
           Ready to Collaborate?
         </motion.h2>
         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
-          Whether you're launching a new venture or scaling your business, CitrUX is here to support your vision with powerful digital solutions.
+          Whether you&apos;re launching a new venture or scaling your business, CitrUX is here to support your vision with powerful digital solutions.
         </p>
         <Link
           href="/book"
