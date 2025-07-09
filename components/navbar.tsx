@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 import { AlignJustify, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import DropDownMenu from "./drop-down-menu";
+import { usePathname } from "next/navigation";
 
-// ✅ Define props type
 type NavbarProps = {
   scrollToWebsiteDesign?: () => void;
   scrollToGraphicDesign?: () => void;
@@ -22,8 +21,11 @@ const Navbar = ({
   scrollToBrands,
   scrollToServices,
 }: NavbarProps) => {
+  const pathname = usePathname();
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const isActive = (path: string) => pathname === path;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,21 +56,46 @@ const Navbar = ({
           />
         </Link>
 
+        {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
-          <Link href="/" className="hover:text-gray-50">Home</Link>
-          <Link href="/services" className="hover:text-gray-50">Services</Link>
-          <Link href="/careers" className="hover:text-gray-50">Careers</Link>
-          <Link href="/about" className="hover:text-gray-50">About</Link>
+          {[
+            { href: "/", label: "Home" },
+            { href: "/services", label: "Services" },
+            { href: "/careers", label: "Careers" },
+            { href: "/about", label: "About" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`relative transition-colors duration-300 px-1 ${
+                isActive(item.href)
+                  ? "text-white after:scale-x-100"
+                  : "text-slate-300 after:scale-x-0 hover:after:scale-x-100"
+              } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:origin-center after:transition-transform after:duration-300`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
+        {/* Mobile Icon */}
         <div className="flex md:hidden">
           {isDropDownVisible ? (
-            <X onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer" aria-label="Close menu" />
+            <X
+              onClick={toggleDropDown}
+              className="w-8 h-8 text-slate-300 cursor-pointer"
+              aria-label="Close menu"
+            />
           ) : (
-            <AlignJustify onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer" aria-label="Open menu" />
+            <AlignJustify
+              onClick={toggleDropDown}
+              className="w-8 h-8 text-slate-300 cursor-pointer"
+              aria-label="Open menu"
+            />
           )}
         </div>
 
+        {/* Desktop Contact Button */}
         <div className="hidden md:flex">
           <Link
             href="/contact"
@@ -82,12 +109,27 @@ const Navbar = ({
         </div>
       </div>
 
+      {/* Mobile Dropdown */}
       {isDropDownVisible && (
         <div className="md:hidden bg-black text-slate-300 px-4 py-3 space-y-3">
-          <Link href="/" onClick={closeDropDown} className="block hover:text-gray-50">Home</Link>
-          <Link href="/services" onClick={closeDropDown} className="block hover:text-gray-50">Services</Link>
-          <Link href="/careers" onClick={closeDropDown} className="block hover:text-gray-50">Careers</Link>
-          <Link href="/about" onClick={closeDropDown} className="block hover:text-gray-50">About</Link>
+          {[
+            { href: "/", label: "Home" },
+            { href: "/services", label: "Services" },
+            { href: "/careers", label: "Careers" },
+            { href: "/about", label: "About" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={closeDropDown}
+              className={`block hover:text-white ${
+                isActive(item.href) ? "text-white font-medium" : ""
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
           <Link
             href="/contact"
             onClick={closeDropDown}
@@ -102,4 +144,3 @@ const Navbar = ({
 };
 
 export default Navbar;
-
