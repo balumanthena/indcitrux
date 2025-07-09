@@ -57,45 +57,6 @@ const FAQS = () => {
           </AccordionItem>
         </Accordion>
       </div>
-
-      {/* Horizontal Footer Section */}
-      <footer className="bg-[#1a1a1a] text-white py-10 mt-10 rounded-b-3xl">
-        <div className="container mx-auto px-6 md:px-20">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-sm text-center md:text-left">
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <Image
-                priority
-                src="https://assets.citrux.in/images/citrux_dark_logo.svg"
-                alt="Logo"
-                width={120}
-                height={40}
-                className="h-auto w-[120px] md:w-[140px]"
-              />
-            </div>
-
-            {/* Company Info */}
-            <div>
-              <h3 className="text-lg font-semibold text-[#6e76ff] mb-2">IND CITRUX PVT LTD</h3>
-              <p className="leading-relaxed">
-                2nd Floor, IT Tower, Siddipet<br />
-                Siddipet, Telangana, India
-              </p>
-            </div>
-
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-lg font-semibold text-[#6e76ff] mb-2">Contact</h3>
-              <p>Email: <a href="mailto:info@citrux.in" className="text-[#6e76ff] hover:underline">info@citrux.in</a></p>
-              <p>Phone: <a href="tel:+918555954798" className="text-[#6e76ff] hover:underline">+91 8555 954 798</a></p>
-            </div>
-          </div>
-
-          <div className="text-center text-xs text-gray-400 mt-8">
-            © {new Date().getFullYear()} IND CITRUX PVT LTD. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };

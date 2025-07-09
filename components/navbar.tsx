@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { AlignJustify, X } from "lucide-react";
 import Image from "next/image";
@@ -13,17 +14,9 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const toggleDropDown = () => setIsDropDownVisible(!isDropDownVisible);
   const closeDropDown = () => setIsDropDownVisible(false);
@@ -36,56 +29,31 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between px-4 py-3">
         {/* Logo */}
-        <div className="flex items-center">
-          <Link href="/" className="cursor-pointer">
-            <Image
-              priority
-              src="https://assets.citrux.in/images/citrux_dark_logo.svg"
-              alt="Logo"
-              width={120}
-              height={40}
-              className="h-auto w-[120px] md:w-[140px]"
-            />
-          </Link>
-        </div>
+        <Link href="/" className="cursor-pointer">
+          <Image
+            priority
+            src="https://assets.citrux.in/images/citrux_dark_logo.svg"
+            alt="Logo"
+            width={120}
+            height={40}
+            className="h-auto w-[120px] md:w-[140px]"
+          />
+        </Link>
 
-        {/* Navigation Links (Desktop) */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
-          <div onClick={() => scrollToSection("website-design")} className="hover:text-gray-50 cursor-pointer">
-            Product Design
-          </div>
-          <div onClick={() => scrollToSection("graphic-design")} className="hover:text-gray-50 cursor-pointer">
-            Artificial Intelligence
-          </div>
-          <div onClick={() => scrollToSection("shopify-stores")} className="hover:text-gray-50 cursor-pointer">
-            Quick Commerce
-          </div>
-          <div onClick={() => scrollToSection("brands")} className="hover:text-gray-50 cursor-pointer">
-            Brands
-          </div>
-
-          {/* ✅ Link to Services Page */}
-          <Link href="/services" className="hover:text-gray-50">
-            Services
-          </Link>
-
-          <Link href="/Careers" className="hover:text-gray-50">
-            Careers
-          </Link>
+          <Link href="/" className="hover:text-gray-50">Home</Link>
+          <Link href="/services" className="hover:text-gray-50">Services</Link>
+          <Link href="/careers" className="hover:text-gray-50">Careers</Link>
+          <Link href="/about" className="hover:text-gray-50">About</Link>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Toggle */}
         <div className="flex md:hidden">
           {isDropDownVisible ? (
-            <div onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer">
-              <X />
-              <DropDownMenu onClose={closeDropDown} scrollToservices={() => scrollToSection("services")} />
-            </div>
+            <X onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer" aria-label="Close menu" />
           ) : (
-            <AlignJustify
-              onClick={toggleDropDown}
-              className="w-8 h-8 text-slate-300 cursor-pointer"
-            />
+            <AlignJustify onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer" aria-label="Open menu" />
           )}
         </div>
 
@@ -102,10 +70,25 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isDropDownVisible && (
+        <div className="md:hidden bg-black text-slate-300 px-4 py-3 space-y-3">
+          <Link href="/" onClick={closeDropDown} className="block hover:text-gray-50">Home</Link>
+          <Link href="/services" onClick={closeDropDown} className="block hover:text-gray-50">Services</Link>
+          <Link href="/careers" onClick={closeDropDown} className="block hover:text-gray-50">Careers</Link>
+          <Link href="/about" onClick={closeDropDown} className="block hover:text-gray-50">About</Link>
+          <Link
+            href="/contact"
+            onClick={closeDropDown}
+            className="inline-block mt-3 border border-slate-800 rounded-md px-4 py-2 text-slate-400 hover:text-white"
+          >
+            Contact
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Navbar;
-
-

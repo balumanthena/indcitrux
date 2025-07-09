@@ -6,6 +6,8 @@ import { PiCheckCircleFill } from "react-icons/pi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Navbar from "@/components/navbar";
+import Footer from '@/components/footer';
+
 
 const googleFormLink =
   "https://docs.google.com/forms/d/e/1FAIpQLSd1wTtouug0gtOWF4pJ5mbL4jG7qVYKXGxE5sP9bCZNz_gVmA/viewform?usp=sharing";
@@ -82,12 +84,7 @@ const Careers = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
-      className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] text-white antialiased"
-    >
+    <div className="w-full min-h-screen bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] text-white antialiased">
       <Head>
         <title>Join Our Internship Program | Balu Tech Crop</title>
         <meta
@@ -100,10 +97,9 @@ const Careers = () => {
         />
       </Head>
 
-      <Navbar
-      />
+      <Navbar />
 
-      {/* Careers Section Header */}
+      {/* Header */}
       <section className="pt-24 pb-16 px-6 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center">
         <h4 className="uppercase text-sm tracking-wide text-purple-300">CAREERS</h4>
         <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">Careers</h1>
@@ -112,7 +108,7 @@ const Careers = () => {
         </p>
       </section>
 
-      {/* Internship Cards Section */}
+      {/* Internship Cards */}
       <section className="pt-10">
         <motion.div
           initial="hidden"
@@ -165,7 +161,7 @@ const Careers = () => {
         </motion.div>
       </section>
 
-      {/* YouTube Video Section */}
+      {/* YouTube Section */}
       <div className="container mx-auto text-center py-16 px-6">
         <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
           Learn More About Our Internships
@@ -230,7 +226,8 @@ const Careers = () => {
           ))}
         </div>
       </div>
-    </motion.div>
+      <Footer />
+    </div>
   );
 };
 

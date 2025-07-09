@@ -5,6 +5,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Head from 'next/head';
+import Footer from '@/components/footer';
+
 
 type Service = {
   name: string;
@@ -155,6 +157,7 @@ export default function ServicesClient() {
           </motion.div>
         </AnimatePresence>
       </section>
+      <Footer />
     </div>
   );
 }
