@@ -6,7 +6,22 @@ import Image from "next/image";
 import Link from "next/link";
 import DropDownMenu from "./drop-down-menu";
 
-const Navbar = () => {
+// ✅ Define props type
+type NavbarProps = {
+  scrollToWebsiteDesign?: () => void;
+  scrollToGraphicDesign?: () => void;
+  scrollToShopifyStores?: () => void;
+  scrollToBrands?: () => void;
+  scrollToServices?: () => void;
+};
+
+const Navbar = ({
+  scrollToWebsiteDesign,
+  scrollToGraphicDesign,
+  scrollToShopifyStores,
+  scrollToBrands,
+  scrollToServices,
+}: NavbarProps) => {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -28,7 +43,6 @@ const Navbar = () => {
       }`}
     >
       <div className="flex items-center justify-between px-4 py-3">
-        {/* Logo */}
         <Link href="/" className="cursor-pointer">
           <Image
             priority
@@ -40,7 +54,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
           <Link href="/" className="hover:text-gray-50">Home</Link>
           <Link href="/services" className="hover:text-gray-50">Services</Link>
@@ -48,7 +61,6 @@ const Navbar = () => {
           <Link href="/about" className="hover:text-gray-50">About</Link>
         </div>
 
-        {/* Mobile Menu Toggle */}
         <div className="flex md:hidden">
           {isDropDownVisible ? (
             <X onClick={toggleDropDown} className="w-8 h-8 text-slate-300 cursor-pointer" aria-label="Close menu" />
@@ -57,7 +69,6 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Contact Button */}
         <div className="hidden md:flex">
           <Link
             href="/contact"
@@ -71,7 +82,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {isDropDownVisible && (
         <div className="md:hidden bg-black text-slate-300 px-4 py-3 space-y-3">
           <Link href="/" onClick={closeDropDown} className="block hover:text-gray-50">Home</Link>
@@ -92,3 +102,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
