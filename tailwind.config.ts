@@ -5,7 +5,6 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-/** @type {import('tailwindcss').Config} */
 const config: Config = {
   darkMode: ["class"],
   content: [
@@ -96,12 +95,30 @@ const config: Config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
-
-        // ✅ Gradient animated keyframe
         gradientBG: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+
+        // ✅ Added marquee keyframes
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+        shimmer: "shimmer 2s linear infinite",
+        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+        "spin-slow": "spin 4s linear infinite",
+        "bounce-slow": "bounce 2.5s infinite",
+        "pulse-slow": "pulse 3s ease-in-out infinite",
+        gradient: "gradientBG 5s ease infinite",
+
+        // ✅ Added marquee animation
+        marquee: "marquee 30s linear infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -121,21 +138,6 @@ const config: Config = {
         "glass-gradient":
           "linear-gradient(rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.05) 100%)",
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-        shimmer: "shimmer 2s linear infinite",
-        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-
-        // ✅ UI/UX design enhancements
-        "spin-slow": "spin 4s linear infinite",
-        "bounce-slow": "bounce 2.5s infinite",
-        "pulse-slow": "pulse 3s ease-in-out infinite",
-
-        // ✅ Gradient animation
-        gradient: "gradientBG 5s ease infinite",
-      },
     },
   },
   plugins: [
@@ -144,7 +146,6 @@ const config: Config = {
   ],
 };
 
-// ✅ Auto-create CSS variables for Tailwind colors
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(

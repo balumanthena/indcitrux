@@ -88,3 +88,10 @@
 .animate-pulse-neon {
   animation: pulse-neon 6s ease-in-out infinite;
 }
+/* styles/globals.css or wherever your global styles are */
+.outlined-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  /* Optional smoothness */
+  -webkit-font-smoothing: antialiased;
+}

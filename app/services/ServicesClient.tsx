@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Head from 'next/head';
+import { Rocket } from 'lucide-react';
 import Footer from '@/components/footer';
 
 type Service = {
@@ -17,41 +18,32 @@ type Service = {
 const services: Service[] = [
   {
     name: 'Website Design',
-    description:
-      'We build fully responsive websites that look great on all devices. Our websites are designed to convert visitors into customers.',
-    details:
-      'Our team of certified web design experts helps you unlock the full potential of your online presence...',
+    description: 'We build fully responsive websites that look great on all devices...',
+    details: 'At Citrux Technologies, we design and develop fully responsive websites that scale beautifully across all screen sizes. From bold visuals to fluid user interactions, we create digital experiences that engage your audience on any device—whether it’s a mobile phone, tablet, or desktop. Built with performance, design, and strategy in mind, our responsive websites don’t just look good—they work hard for your business 24/7',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'E-commerce Store',
-    description:
-      'From small stores to large online retailers, we have the expertise to build a store that will help you grow your business.',
-    details:
-      'We design e-commerce experiences that do more than look good — they convert...',
+    description: 'From small stores to large online retailers...',
+    details: 'Whether you are on Shopify, WooCommerce, or a custom headless platform, we craft e-commerce experiences that are as scalable and performant as they are visually stunning—backed by best practices in UX, SEO, and CRO.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'UI / UX',
-    description:
-      'We design intuitive, user-friendly interfaces that grow with your business and delight your customers.',
-    details:
-      'Our UI/UX specialists create digital experiences that feel as good as they look...',
+    description: 'We design intuitive, user-friendly interfaces...',
+    details: 'At Citrux Technologies, our UI/UX specialists blend design thinking with modern technology to deliver digital experiences that are beautiful, functional, and human-centered. We prioritize simplicity, clarity, and responsiveness—ensuring that users not only understand your product, but love using it.',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'Health Service',
     description: 'We provide all R1 and RCM service with excellent output.',
-    details:
-      'We offer end-to-end R1 and Revenue Cycle Management (RCM) solutions tailored for healthcare providers...',
+    details: 'We offer comprehensive, end-to-end R1 and Revenue Cycle Management (RCM) solutions—including medical billing, claims processing, and accurate medical coding—to help healthcare providers streamline operations, maximize reimbursements, and maintain compliance across the revenue cycle.',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'App Development',
-    description:
-      'We build custom mobile apps for iOS and Android. Our apps are designed to be user-friendly and performant.',
-    details:
-      'We design and develop custom mobile applications for iOS and Android...',
+    description: 'We build custom mobile apps for iOS and Android...',
+    details: 'We design and develop custom mobile applications tailored to your unique business needs—combining user-centric design, robust functionality, and seamless performance. From concept to launch, we create intuitive, scalable apps for both iOS and Android that deliver real value and engage users every step of the way.',
     image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
   },
 ];
@@ -88,60 +80,38 @@ export default function ServicesClient() {
     <div className="relative min-h-screen bg-gray-950 text-white overflow-hidden">
       <Head>
         <title>Our Services | CitrUX</title>
-        <meta
-          name="description"
-          content="Explore services like Cloud, AI, Software Development, and more from CitrUX."
-        />
+        <meta name="description" content="Explore services like Cloud, AI, Software Development, and more from CitrUX." />
       </Head>
 
-      {/* Background Blobs */}
+      {/* Blobs */}
       <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-700 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
       <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-indigo-600 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
 
       {/* Header */}
       <header className="relative pt-24 pb-12 px-4 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center z-10">
-        <motion.h4
-          className="uppercase text-sm tracking-wide text-purple-300"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.h4 className="uppercase text-sm tracking-wide text-purple-300" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
           Services
         </motion.h4>
-        <motion.h1
-          className="text-3xl md:text-5xl font-bold mt-2"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
+        <motion.h1 className="text-3xl md:text-5xl font-bold mt-2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
           Our Services
         </motion.h1>
-        <motion.p
-          className="max-w-2xl mx-auto mt-4 text-gray-300"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          From website design to social media management, We offer a wide range of services to help you grow your business.
+        <motion.p className="max-w-2xl mx-auto mt-4 text-gray-300" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+          From website design to social media management, we offer a wide range of services to help you grow your business.
         </motion.p>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-8"
-        >
+        <motion.div variants={containerVariants} initial="hidden" animate="show" className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-8">
           {services.map((service) => (
             <motion.div key={service.name} variants={itemVariants}>
-              <ServiceButton
-                service={service}
-                isSelected={selectedService.name === service.name}
-                onClick={() => setSelectedService(service)}
-              />
+              <ServiceButton service={service} isSelected={selectedService.name === service.name} onClick={() => setSelectedService(service)} />
             </motion.div>
           ))}
         </motion.div>
       </header>
 
-      {/* Main Section */}
+      {/* Marquee */}
+      <ScrollingText selectedServiceName={selectedService.name} />
+
+      {/* Main */}
       <section className="relative z-10 px-4 md:px-16 py-16">
         <AnimatePresence mode="wait">
           <motion.div
@@ -156,20 +126,13 @@ export default function ServicesClient() {
           </motion.div>
         </AnimatePresence>
       </section>
+
       <Footer />
     </div>
   );
 }
 
-function ServiceButton({
-  service,
-  isSelected,
-  onClick,
-}: {
-  service: Service;
-  isSelected: boolean;
-  onClick: () => void;
-}) {
+function ServiceButton({ service, isSelected, onClick }: { service: Service; isSelected: boolean; onClick: () => void }) {
   return (
     <button
       onClick={onClick}
@@ -190,12 +153,7 @@ function ServiceDetails({ service }: { service: Service }) {
 
   return (
     <>
-      <motion.div
-        key={service.name + '-text'}
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
+      <motion.div key={service.name + '-text'} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
         <h2 className="text-3xl font-bold mb-4 leading-snug">
           Transform Your Business with{' '}
           <br className="hidden md:inline" />
@@ -222,14 +180,38 @@ function ServiceDetails({ service }: { service: Service }) {
         whileHover={{ scale: 1.05, rotate: 1 }}
         whileTap={{ scale: 0.98 }}
       >
-        <Image
-          src={service.image}
-          alt={service.name}
-          width={500}
-          height={500}
-          className="rounded-xl shadow-2xl object-cover"
-        />
+        <Image src={service.image} alt={service.name} width={500} height={500} className="rounded-xl shadow-2xl object-cover" />
       </motion.div>
     </>
+  );
+}
+
+function ScrollingText({ selectedServiceName }: { selectedServiceName: string }) {
+  return (
+    <div className="relative overflow-hidden py-4 bg-gradient-to-r from-purple-800/30 via-indigo-700/30 to-blue-700/30 z-10 group">
+      <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-gray-950 to-transparent z-20 pointer-events-none" />
+      <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-gray-950 to-transparent z-20 pointer-events-none" />
+
+      <div className="relative z-10 whitespace-nowrap overflow-hidden">
+        <div className="inline-flex animate-marquee group-hover:[animation-play-state:paused]">
+          {services.concat(services).map((service, index) => {
+            const isSelected = service.name === selectedServiceName;
+            return (
+              <div
+                key={`${service.name}-${index}`}
+                className={`flex items-center gap-2 px-6 text-lg ${
+                  isSelected
+                    ? 'text-white font-semibold bg-purple-600/30 rounded-full px-4 py-1 shadow-md'
+                    : 'text-purple-300'
+                }`}
+              >
+                <Rocket size={18} className={isSelected ? "text-white" : "text-purple-400"} />
+                {service.name}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
