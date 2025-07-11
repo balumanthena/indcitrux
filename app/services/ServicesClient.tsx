@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { Rocket } from 'lucide-react';
 import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
 
 type Service = {
   name: string;
@@ -19,36 +20,41 @@ const services: Service[] = [
   {
     name: 'Website Design',
     description: 'We build fully responsive websites that look great on all devices...',
-    details: 'At Citrux Technologies, we design and develop fully responsive websites that scale beautifully across all screen sizes. From bold visuals to fluid user interactions, we create digital experiences that engage your audience on any device—whether it’s a mobile phone, tablet, or desktop. Built with performance, design, and strategy in mind, our responsive websites don’t just look good—they work hard for your business 24/7',
+    details:
+      'At Citrux Technologies, we design and develop fully responsive websites that scale beautifully across all screen sizes. From bold visuals to fluid user interactions, we create digital experiences that engage your audience on any device—whether it’s a mobile phone, tablet, or desktop. Built with performance, design, and strategy in mind, our responsive websites don’t just look good—they work hard for your business 24/7',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'E-commerce Store',
     description: 'From small stores to large online retailers...',
-    details: 'Whether you are on Shopify, WooCommerce, or a custom headless platform, we craft e-commerce experiences that are as scalable and performant as they are visually stunning—backed by best practices in UX, SEO, and CRO.',
+    details:
+      'Whether you are on Shopify, WooCommerce, or a custom headless platform, we craft e-commerce experiences that are as scalable and performant as they are visually stunning—backed by best practices in UX, SEO, and CRO.',
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'UI / UX',
     description: 'We design intuitive, user-friendly interfaces...',
-    details: 'At Citrux Technologies, our UI/UX specialists blend design thinking with modern technology to deliver digital experiences that are beautiful, functional, and human-centered. We prioritize simplicity, clarity, and responsiveness—ensuring that users not only understand your product, but love using it.',
+    details:
+      'At Citrux Technologies, our UI/UX specialists blend design thinking with modern technology to deliver digital experiences that are beautiful, functional, and human-centered. We prioritize simplicity, clarity, and responsiveness—ensuring that users not only understand your product, but love using it.',
     image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'Health Service',
     description: 'We provide all R1 and RCM service with excellent output.',
-    details: 'We offer comprehensive, end-to-end R1 and Revenue Cycle Management (RCM) solutions—including medical billing, claims processing, and accurate medical coding—to help healthcare providers streamline operations, maximize reimbursements, and maintain compliance across the revenue cycle.',
+    details:
+      'We offer comprehensive, end-to-end R1 and Revenue Cycle Management (RCM) solutions—including medical billing, claims processing, and accurate medical coding—to help healthcare providers streamline operations, maximize reimbursements, and maintain compliance across the revenue cycle.',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
   },
   {
     name: 'App Development',
     description: 'We build custom mobile apps for iOS and Android...',
-    details: 'We design and develop custom mobile applications tailored to your unique business needs—combining user-centric design, robust functionality, and seamless performance. From concept to launch, we create intuitive, scalable apps for both iOS and Android that deliver real value and engage users every step of the way.',
+    details:
+      'We design and develop custom mobile applications tailored to your unique business needs—combining user-centric design, robust functionality, and seamless performance. From concept to launch, we create intuitive, scalable apps for both iOS and Android that deliver real value and engage users every step of the way.',
     image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
   },
 ];
 
-export default function ServicesClient() {
+export default function ServicesPage() {
   const searchParams = useSearchParams();
   const queryService = searchParams.get('service');
   const [selectedService, setSelectedService] = useState<Service>(services[0]);
@@ -83,23 +89,43 @@ export default function ServicesClient() {
         <meta name="description" content="Explore services like Cloud, AI, Software Development, and more from CitrUX." />
       </Head>
 
+      <Navbar />
+
       {/* Blobs */}
       <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-700 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
       <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-indigo-600 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
 
       {/* Header */}
-      <header className="relative pt-24 pb-12 px-4 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center z-10">
-        <motion.h4 className="uppercase text-sm tracking-wide text-purple-300" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+      <header className="relative pt-24 pb-12 px-4 md:px-16 text-center z-10">
+        <motion.h4
+          className="uppercase text-sm tracking-wide text-purple-300"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           Services
         </motion.h4>
-        <motion.h1 className="text-3xl md:text-5xl font-bold mt-2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-          What we do
+        <motion.h1
+          className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          What We Do
         </motion.h1>
-        <motion.p className="max-w-2xl mx-auto mt-4 text-gray-300" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
+        <motion.p
+          className="max-w-2xl mx-auto mt-4 text-gray-300 text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
           From website design to social media management, we offer a wide range of services to help you grow your business.
         </motion.p>
 
-        <motion.div variants={containerVariants} initial="hidden" animate="show" className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 mt-8"
+        >
           {services.map((service) => (
             <motion.div key={service.name} variants={itemVariants}>
               <ServiceButton service={service} isSelected={selectedService.name === service.name} onClick={() => setSelectedService(service)} />
@@ -108,10 +134,8 @@ export default function ServicesClient() {
         </motion.div>
       </header>
 
-      {/* Marquee */}
       <ScrollingText selectedServiceName={selectedService.name} />
 
-      {/* Main */}
       <section className="relative z-10 px-4 md:px-16 py-16">
         <AnimatePresence mode="wait">
           <motion.div
@@ -153,12 +177,16 @@ function ServiceDetails({ service }: { service: Service }) {
 
   return (
     <>
-      <motion.div key={service.name + '-text'} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h2 className="text-3xl font-bold mb-4 leading-snug">
-          Transform Your Business with{' '}
-          <br className="hidden md:inline" />
+      <motion.div
+        key={service.name + '-text'}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-snug">
+          Transform Your Business with  <br />{' '}
           <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent animate-gradient">
-            Leading {service.name}
+            {service.name}
           </span>
         </h2>
         <p className="text-purple-300 font-medium mb-4">{service.description}</p>
@@ -205,7 +233,7 @@ function ScrollingText({ selectedServiceName }: { selectedServiceName: string })
                     : 'text-purple-300'
                 }`}
               >
-                <Rocket size={18} className={isSelected ? "text-white" : "text-purple-400"} />
+                <Rocket size={18} className={isSelected ? 'text-white' : 'text-purple-400'} />
                 {service.name}
               </div>
             );

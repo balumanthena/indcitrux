@@ -89,54 +89,60 @@ const Careers = () => {
 
       <Head>
         <title>Join Our Internship Program | Balu Tech Crop</title>
-        <meta
-          name="description"
-          content="Apply for exciting internships at Balu Tech Crop. Gain hands-on experience and kickstart your career!"
-        />
-        <meta
-          name="keywords"
-          content="internship, careers, Balu Tech Crop, tech jobs, student internships"
-        />
+        <meta name="description" content="Apply for exciting internships at Balu Tech Crop. Gain hands-on experience and kickstart your career!" />
       </Head>
 
       <Navbar />
 
       {/* Header */}
-      <section className="pt-24 pb-16 px-6 md:px-16 bg-gradient-to-r from-purple-800 via-indigo-800 to-blue-700 text-center z-10 relative">
-        <h4 className="uppercase text-sm tracking-wide text-purple-300">CAREERS</h4>
-        <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">Careers</h1>
-        <p className="max-w-2xl mx-auto mt-4 text-white/80 text-lg md:text-xl">
-          Join our mission-driven team and Advance your career where innovation begins.
-        </p>
-      </section>
+      <header className="relative pt-24 pb-12 px-6 md:px-16 text-center z-10">
+        <motion.h4
+          className="uppercase text-sm tracking-wide text-purple-300"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Careers
+        </motion.h4>
+        <motion.h1
+          className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Careers
+        </motion.h1>
+        <motion.p
+          className="max-w-2xl mx-auto mt-4 text-gray-300 text-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          Join our mission-driven team and advance your career where innovation begins.
+        </motion.p>
+      </header>
 
       {/* Internship Cards */}
-      <section className="pt-10 z-10 relative">
+      <section className="relative z-10 px-6 md:px-16 py-16">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={{
             hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
+            visible: { transition: { staggerChildren: 0.2 } },
           }}
-          className="container mx-auto grid md:grid-cols-3 gap-8 px-6"
+          className="grid md:grid-cols-3 gap-8"
         >
           {internships.map((internship, index) => (
             <motion.div
               key={internship.name}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{ scale: 1.03 }}
-              className="relative flex flex-col justify-between rounded-xl p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-purple-700/30 shadow-md backdrop-blur-xl hover:shadow-purple-500/30 transition-all duration-300"
+              className="flex flex-col justify-between rounded-xl p-6 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 border border-purple-700/30 shadow-md backdrop-blur-xl hover:shadow-purple-500/30 transition-all duration-300"
             >
-              <div className="relative z-10">
-                <h2 className="text-2xl font-semibold mb-1 text-white">{internship.name}</h2>
+              <div>
+                <h2 className="text-2xl font-semibold mb-1">{internship.name}</h2>
                 <p className="text-sm text-purple-400 mb-4">{internship.duration}</p>
                 <p className="text-gray-300 mb-4 text-sm">{internship.description}</p>
                 <ul className="space-y-2 text-sm text-gray-200 mb-4">
@@ -153,7 +159,7 @@ const Careers = () => {
                   rel="noopener noreferrer"
                   whileTap={{ scale: 0.97 }}
                   whileHover={{ scale: 1.02 }}
-                  className="inline-block w-full text-center py-2 rounded-md bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300"
+                  className="block text-center py-2 rounded-md bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white font-semibold shadow-lg hover:scale-105 transition-all duration-300"
                 >
                   Apply Now
                 </motion.a>
@@ -164,7 +170,7 @@ const Careers = () => {
       </section>
 
       {/* YouTube Section */}
-      <div className="container mx-auto text-center py-16 px-6 relative z-10">
+      <section className="container mx-auto text-center py-16 px-6 relative z-10">
         <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
           Learn More About Our Internships
         </h2>
@@ -183,10 +189,10 @@ const Careers = () => {
             allowFullScreen
           ></iframe>
         </motion.div>
-      </div>
+      </section>
 
       {/* FAQ Section */}
-      <div className="container mx-auto py-16 px-6 relative z-10">
+      <section className="container mx-auto py-16 px-6 relative z-10">
         <h2 className="text-4xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500 animate-pulse">
           Frequently Asked Questions
         </h2>
@@ -227,7 +233,7 @@ const Careers = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </section>
 
       <Footer />
     </div>
