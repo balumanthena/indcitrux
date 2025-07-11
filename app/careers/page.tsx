@@ -106,7 +106,7 @@ const Careers = () => {
         <h4 className="uppercase text-sm tracking-wide text-purple-300">CAREERS</h4>
         <h1 className="text-3xl md:text-5xl font-bold mt-2 text-white">Careers</h1>
         <p className="max-w-2xl mx-auto mt-4 text-white/80 text-lg md:text-xl">
-          Join our mission-driven team and grow your career with real-world experience, guidance, and innovation.
+          Join our mission-driven team and Advance your career where innovation begins.
         </p>
       </section>
 

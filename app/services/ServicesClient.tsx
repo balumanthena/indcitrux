@@ -93,7 +93,7 @@ export default function ServicesClient() {
           Services
         </motion.h4>
         <motion.h1 className="text-3xl md:text-5xl font-bold mt-2" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-          Our Services
+          What we do
         </motion.h1>
         <motion.p className="max-w-2xl mx-auto mt-4 text-gray-300" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
           From website design to social media management, we offer a wide range of services to help you grow your business.

@@ -59,10 +59,10 @@ const Navbar = ({
         {/* Desktop Nav */}
         <div className="hidden md:flex space-x-6 items-center text-slate-300 text-center">
           {[
-            { href: "/", label: "Home" },
-            { href: "/services", label: "Services" },
+            { href: "/", label: "Explore" },
+            { href: "/services", label: "What we do" },
             { href: "/careers", label: "Careers" },
-            { href: "/about", label: "About" },
+            { href: "/about", label: "Who we are" },
           ].map((item) => (
             <Link
               key={item.href}

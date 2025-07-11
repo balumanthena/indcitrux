@@ -32,7 +32,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          About Us
+          Who we are
         </motion.h4>
         <motion.h1
           className="text-3xl md:text-5xl font-bold mt-2"
