@@ -65,7 +65,7 @@ export default function AboutPage() {
 
     <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-5">
       <p>
-        CitrUX exists to transform bold ideas into scalable, human-centered digital products that drive measurable outcomes. We’re not just a digital agency—we are strategic partners for innovation, growth, and meaningful change.
+        CitrUX exists to transform bold ideas into scalable, human-centered digital products that drive measurable outcomes. We&apos;re not just a digital agency—we are strategic partners for innovation, growth, and meaningful change.
       </p>
       <p>
         Our process starts with empathy. We deeply understand the problems, needs, and behaviors of the people who will use the solutions we build. From startups to global enterprises, we collaborate closely with our clients to craft intuitive digital experiences that are both elegant and efficient.
@@ -74,7 +74,7 @@ export default function AboutPage() {
         At the heart of CitrUX is a belief in clarity through design. Every interaction, layout, and visual element is intentional—aimed at reducing complexity and enhancing user engagement. We pair that design-first mindset with cutting-edge technologies to move quickly and scale effectively, without ever compromising on quality.
       </p>
       <p>
-        Whether it’s developing next-gen platforms, reimagining customer experiences, or streamlining operations with AI-powered tools, our goal is to create impact. And that impact is measured not just in metrics, but in the lasting value we bring to our partners and the communities they serve.
+        Whether it&apos;s developing next-gen platforms, reimagining customer experiences, or streamlining operations with AI-powered tools, our goal is to create impact. And that impact is measured not just in metrics, but in the lasting value we bring to our partners and the communities they serve.
       </p>
     </div>
   </motion.div>
