@@ -67,15 +67,18 @@ const Footer = () => {
           </button>
           {showLinks && (
             <ul className="space-y-3 mt-4 text-sm text-gray-400">
-              {['Home', 'Services', 'Careers', 'About', 'Contact'].map((link) => (
-                <li key={link}>
-                  <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 200 }}>
-                    <Link href={`/${link.toLowerCase()}`} className="hover:text-white transition">
-                      {link}
-                    </Link>
-                  </motion.div>
-                </li>
-              ))}
+              {['Home', 'Services', 'Careers', 'About', 'Contact'].map((link) => {
+                const path = link === 'Home' ? '/' : `/${link.toLowerCase()}`;
+                return (
+                  <li key={link}>
+                    <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 200 }}>
+                      <Link href={path} className="hover:text-white transition">
+                        {link}
+                      </Link>
+                    </motion.div>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
@@ -100,8 +103,8 @@ const Footer = () => {
                 'Web Design & Development',
                 'App Development',
                 'UI/UX Design',
-                'Automation & AI',
-                'Branding & Strategy'
+                'E-commerce Store',
+                'Health Service'
               ].map((service) => (
                 <li key={service} className="hover:text-white transition">{service}</li>
               ))}

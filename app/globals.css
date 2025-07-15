@@ -95,3 +95,9 @@
   /* Optional smoothness */
   -webkit-font-smoothing: antialiased;
 }
+@media (min-width: 768px) {
+  html,
+  body {
+    cursor: none;
+  }
+}

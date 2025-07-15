@@ -8,7 +8,7 @@ import Link from "next/link";
 import WebsiteDesign from "./website-design";
 import GraphicDesign from "./graphic-design";
 import ShopifyStores from "./shopify-stores";
-import Brands from "./brands";
+// import Brands from "./brands";
 import Services from "./services";
 import FAQS from "./faq";
 import { InfiniteMovingCardsDemo } from "./snippets/infinite-moving-card-snippet";
@@ -52,7 +52,7 @@ export default function Home() {
         <WebsiteDesign />
         <GraphicDesign />
         <ShopifyStores />
-        <Brands />
+        {/* <Brands /> */}
         <Services />
         <InfiniteMovingCardsDemo />
         <FAQS />
