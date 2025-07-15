@@ -7,21 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-type NavbarProps = {
-  scrollToWebsiteDesign?: () => void;
-  scrollToGraphicDesign?: () => void;
-  scrollToShopifyStores?: () => void;
-  scrollToBrands?: () => void;
-  scrollToServices?: () => void;
-};
-
-const Navbar = ({
-  scrollToWebsiteDesign,
-  scrollToGraphicDesign,
-  scrollToShopifyStores,
-  scrollToBrands,
-  scrollToServices,
-}: NavbarProps) => {
+const Navbar = () => {
   const pathname = usePathname();
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,7 +42,7 @@ const Navbar = ({
 
   return (
     <>
-      {/* Scroll Progress Bar */}
+      {/* Scroll Progress Bar (Desktop only) */}
       <AnimatePresence>
         {showScrollBar && (
           <motion.div
@@ -70,28 +56,29 @@ const Navbar = ({
         )}
       </AnimatePresence>
 
-      {/* Floating CTA */}
+      {/* Floating CTA (Desktop only) */}
       <AnimatePresence>
-        {showCTA && (
-          <motion.div
-            className="fixed bottom-6 right-6 z-[9999] md:flex hidden"
-            initial={{ opacity: 0, y: 80, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 80, scale: 0.8 }}
-            transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          >
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-br from-[#689bf5] to-[#827ef6] text-white font-semibold tracking-wide shadow-[0_0_20px_rgba(130,126,246,0.5)] 
-              hover:shadow-[0_0_30px_rgba(130,126,246,0.8)] hover:scale-105 transition duration-300"
-            >
-              Let’s Talk →
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+  {showCTA && (
+    <motion.div
+      className="fixed bottom-6 right-6 z-[9999] md:flex hidden"
+      initial={{ opacity: 0, y: 80, scale: 0.8 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 80, scale: 0.8 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+    >
+      <Link
+        href="/contact"
+        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-br from-[#689bf5] to-[#827ef6] text-white font-semibold tracking-wide shadow-[0_0_20px_rgba(130,126,246,0.5)] 
+        hover:shadow-[0_0_30px_rgba(130,126,246,0.8)] hover:scale-105 transition duration-300"
+      >
+        Let’s Talk →
+      </Link>
+    </motion.div>
+  )}
+</AnimatePresence>
 
-      {/* Back to Top */}
+
+      {/* Back to Top Button (Desktop only) */}
       <AnimatePresence>
         {scrollProgress > 50 && (
           <motion.button
@@ -122,13 +109,26 @@ const Navbar = ({
             />
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6 items-center text-slate-300">
-            <button onClick={scrollToWebsiteDesign} className="hover:text-white transition">Website Design</button>
-            <button onClick={scrollToGraphicDesign} className="hover:text-white transition">Graphic Design</button>
-            <button onClick={scrollToShopifyStores} className="hover:text-white transition">Shopify Stores</button>
-            <button onClick={scrollToBrands} className="hover:text-white transition">Brand Strategy</button>
-            <button onClick={scrollToServices} className="hover:text-white transition">All Services</button>
+            {[
+              { href: "/", label: "Explore" },
+              { href: "/services", label: "What we do" },
+              { href: "/careers", label: "Careers" },
+              { href: "/about", label: "Who we are" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`relative transition px-1 ${
+                  isActive(item.href)
+                    ? "text-white after:scale-x-100"
+                    : "text-slate-300 after:scale-x-0 hover:after:scale-x-100"
+                } after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:bg-white after:origin-center after:transition-transform after:duration-300`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Toggle */}
@@ -140,7 +140,7 @@ const Navbar = ({
             )}
           </div>
 
-          {/* Desktop Contact */}
+          {/* Desktop Contact Button */}
           <div className="hidden md:flex">
             <Link href="/contact" className="px-4 py-2 border rounded-md text-slate-400 border-slate-700 bg-slate-900 hover:text-white">
               Contact
@@ -151,11 +151,24 @@ const Navbar = ({
         {/* Mobile Dropdown */}
         {isDropDownVisible && (
           <div className="md:hidden bg-black text-slate-300 px-4 py-3 space-y-3">
-            <button onClick={scrollToWebsiteDesign} className="block hover:text-white">Website Design</button>
-            <button onClick={scrollToGraphicDesign} className="block hover:text-white">Graphic Design</button>
-            <button onClick={scrollToShopifyStores} className="block hover:text-white">Shopify Stores</button>
-            <button onClick={scrollToBrands} className="block hover:text-white">Brand Strategy</button>
-            <button onClick={scrollToServices} className="block hover:text-white">All Services</button>
+            {[
+              { href: "/", label: "Home" },
+              { href: "/services", label: "Services" },
+              { href: "/careers", label: "Careers" },
+              { href: "/about", label: "About" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeDropDown}
+                className={`block hover:text-white ${
+                  isActive(item.href) ? "text-white font-medium" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+
             <Link
               href="/contact"
               onClick={closeDropDown}
