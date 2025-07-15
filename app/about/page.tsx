@@ -146,6 +146,7 @@ export default function AboutPage() {
         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
           Whether you&apos;re launching something new or leveling up, CitrUX is your partner in design, development, and digital transformation.
         </p>
+        
         <Link
           href="/book"
           className="inline-block bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition-all duration-300"
