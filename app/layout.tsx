@@ -55,10 +55,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon fallback links */}
+        {/* Favicon + Apple + Manifest */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/favicon-512x512.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#000000" />
+
+        {/* Mobile / Search enhancements */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="Citrux" />
+        <meta name="application-name" content="Citrux Technologies" />
       </head>
       <body suppressHydrationWarning={true} className={font.className}>
         <Analytics />
@@ -96,7 +104,6 @@ export default function RootLayout({
             }),
           }}
         />
-
         {children}
       </body>
     </html>
