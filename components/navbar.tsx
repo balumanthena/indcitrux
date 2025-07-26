@@ -67,11 +67,16 @@ const Navbar = () => {
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
     >
       <Link
-        href="/contact"
-        className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-br from-[#689bf5] to-[#827ef6] text-white font-semibold tracking-wide shadow-[0_0_20px_rgba(130,126,246,0.5)] 
-        hover:shadow-[0_0_30px_rgba(130,126,246,0.8)] hover:scale-105 transition duration-300"
-      >
-        Let’s Talk →
+         href="/contact"
+         className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-950 mt-4"
+       >
+         {/* Spinning gradient border */}
+         <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+         
+         {/* Inner content */}
+         <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-semibold text-white backdrop-blur-3xl z-10 relative">
+           Let’s Talk →
+         </span>
       </Link>
     </motion.div>
   )}

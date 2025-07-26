@@ -9,6 +9,8 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
 import LampDemo from "@/components/ui/lamp";
+import { UserPlus, ShieldCheck, Users } from "lucide-react";
+
 
 const internships = [
   {
@@ -93,7 +95,7 @@ const Careers = () => {
       <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-indigo-600 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
 
       <Head>
-        <title>Join Our Internship Program | Balu Tech Crop</title>
+        <title>Join Our Internship Program | Citrux Technologies</title>
         <meta
           name="description"
           content="Apply for exciting internships at Balu Tech Crop. Gain hands-on experience and kickstart your career!"
@@ -179,9 +181,95 @@ const Careers = () => {
     ))}
   </motion.div>
 </section>
+
+<span className="flex items-center">
+  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-300 dark:to-gray-600"></span>
+
+  <span className="shrink-0 px-4 text-gray-900 dark:text-white"></span>
+
+  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-300 dark:to-gray-600"></span>
+</span>
+
+{/* We're Hiring Section */}
+<section className="relative z-10 px-6 md:px-16 py-24 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
+  <div className="text-center mb-16">
+    <h2 className="text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-400 to-sky-400 animate-text-glow">
+      We&apos;re Hiring – HCC Experts
+    </h2>
+    <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+      Be part of our fast-growing HCC medical coding team at Citrux. All roles require valid CPC/CRC certification.
+    </p>
+  </div>
+
+
+  <div className="grid md:grid-cols-3 gap-10">
+    {[
+      {
+        icon: <UserPlus className="w-12 h-12 text-pink-400" />,
+        title: "Fresher – HCC Coder",
+        tag: "Entry Level",
+        description:
+          "For certified coders (CPC/CRC) looking to break into the HCC domain. Work with real-world charts & receive mentorship.",
+        color: "from-pink-500 to-purple-500",
+      },
+      {
+        icon: <ShieldCheck className="w-12 h-12 text-teal-400" />,
+        title: "Quality Auditor – HCC",
+        tag: "Mid Level",
+        description:
+          "Audit HCC-coded charts for compliance, documentation integrity & CMS guidelines. Accuracy is your superpower.",
+        color: "from-teal-500 to-cyan-500",
+      },
+      {
+        icon: <Users className="w-12 h-12 text-yellow-400" />,
+        title: "Team Lead – HCC Coding",
+        tag: "Leadership",
+        description:
+          "Lead coders, own quality, client updates & compliance. Great for experienced certified leaders in HCC projects.",
+        color: "from-yellow-400 to-orange-500",
+      },
+    ].map((role, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.2 }}
+        whileHover={{ scale: 1.03 }}
+        className={`group p-6 rounded-2xl border border-gray-800 shadow-xl bg-gradient-to-br ${role.color} hover:shadow-${role.color.split(" ")[1]}/60 transition-all`}
+      >
+        <div className="flex items-center gap-4 mb-4">
+          <div className="p-3 bg-white/10 rounded-xl">{role.icon}</div>
+          <div>
+            <h3 className="text-xl font-bold text-white">{role.title}</h3>
+            <span className="inline-block mt-1 text-xs px-3 py-1 rounded-full bg-white/10 text-white uppercase tracking-wider">
+              {role.tag}
+            </span>
+          </div>
+        </div>
+        <p className="text-sm text-white/90 mb-6 leading-relaxed">{role.description}</p>
+        <motion.button
+          onClick={() => setShowModal(true)}
+          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.05 }}
+          className="w-full py-2 px-4 rounded-lg bg-white text-gray-900 font-semibold hover:bg-gray-100 transition"
+        >
+          Apply Now
+        </motion.button>
+      </motion.div>
+    ))}
+  </div>
+
+  <p className="text-center text-sm text-gray-500 mt-12">
+    All applicants must email their resume to{" "}
+    <span className="text-pink-400 font-semibold">careers@citrux.in</span> with subject line: <code>HCC ROLE - [POSITION]</code>
+  </p>
+</section>
+
+
+
 <LampDemo></LampDemo>
 
-      <section className="container mx-auto text-center py-16 px-6 relative z-10">
+      {/* <section className="container mx-auto text-center py-16 px-6 relative z-10">
         <h2 className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
           Inside Our Internship Culture
         </h2>
@@ -200,7 +288,7 @@ const Careers = () => {
             allowFullScreen
           ></iframe>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       <section className="container mx-auto py-16 px-6 relative z-10">

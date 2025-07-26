@@ -116,6 +116,7 @@ const config: Config = {
         "bounce-slow": "bounce 2.5s infinite",
         "pulse-slow": "pulse 3s ease-in-out infinite",
         gradient: "gradientBG 5s ease infinite",
+        
 
         // ✅ Added marquee animation
         marquee: "marquee 30s linear infinite",

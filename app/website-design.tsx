@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ThreeDCardExample } from "./snippets/3d-card-snippet";
 import { EvervaultCardSnippet } from "./snippets/evervault-card-snippet";
+import DotBackgroundDemo from "@/components/ui/dot-background-demo";
 
 const DesignShowcase = () => {
     return (
@@ -41,7 +42,8 @@ const DesignShowcase = () => {
                     <Image width={500} height={500} priority className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
                 </div>
             </div>
-
+            
+           
             {/* Graphic Design Section */}
             <div className="p-4 mx-auto relative z-10 w-full pt-20 md:pt-32">
                 {/*<h1 className="text-4xl md:pb-8 md:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-b from-purple-500 to-sky-200 bg-opacity-50">
@@ -72,6 +74,7 @@ const DesignShowcase = () => {
                     </motion.div>
                 </div>
             </div>
+            
         </div>
     );
 };

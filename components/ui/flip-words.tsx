@@ -1,10 +1,10 @@
 "use client";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, LayoutGroup } from "framer-motion";
+import { AnimatePresence, motion, LayoutGroup } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const FlipWords = ({
-  words =["Build"] ,
+  words,
   duration = 3000,
   className,
 }: {
@@ -12,7 +12,7 @@ export const FlipWords = ({
   duration?: number;
   className?: string;
 }) => {
-  const [currentWord, setCurrentWord] = useState(words[3]);
+  const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   // thanks for the fix Julian - https://github.com/Julian-AT
@@ -64,7 +64,7 @@ export const FlipWords = ({
         key={currentWord}
       >
         {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
-        {currentWord?.split(" ").map((word, wordIndex) => (
+        {currentWord.split(" ").map((word, wordIndex) => (
           <motion.span
             key={word + wordIndex}
             initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}

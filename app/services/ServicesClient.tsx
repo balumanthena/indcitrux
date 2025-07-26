@@ -192,11 +192,15 @@ function ServiceDetails({ service }: { service: Service }) {
         <p className="text-purple-300 font-medium mb-4">{service.description}</p>
         <p className="mb-6 leading-relaxed text-gray-300">{service.details}</p>
         <button
-          onClick={() => router.push('/book')}
-          className="mt-4 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transform transition-all duration-300"
-        >
-          Schedule Free Consultation
-        </button>
+  onClick={() => router.push('/book')}
+  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 mt-4"
+>
+  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+  <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-semibold text-white backdrop-blur-3xl">
+    Schedule Free Consultation →
+  </span>
+</button>
+
       </motion.div>
 
       <motion.div

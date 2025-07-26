@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { FlipWords } from "@/components/ui/flip-words";
 
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -34,6 +35,32 @@ const Footer = () => {
 
   return (
     <footer className="relative z-10 bg-gradient-to-br from-gray-950 via-gray-900 to-black text-gray-300 pt-16 pb-10 px-6 md:px-20">
+
+      {/* FlipWords Sentence ABOVE Logo */}
+      <motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+  className="text-left mb-10"
+>
+  <h2
+  className="text-2xl md:text-4xl lg:text-5xl font-medium leading-snug text-white"
+  style={{ fontFamily: 'Elza, sans-serif' , fontWeight: 750  }}
+>
+  We help you{" "}
+  <FlipWords
+    words={["Innovate", "Design", "Develop", "Scale"]}
+    className="text-pink-400"
+    duration={2000}
+  />
+  
+  your ideas.
+</h2>
+
+</motion.div>
+
+
       <div className="grid md:grid-cols-5 gap-12 mb-16">
         {/* Logo & Description */}
         <div className="space-y-4 md:col-span-1">

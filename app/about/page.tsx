@@ -6,6 +6,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
+
+
 
 export default function AboutPage() {
   return (
@@ -50,6 +53,14 @@ export default function AboutPage() {
           </motion.p>
         </motion.div>
       </section>
+
+      <span className="flex items-center">
+  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-300 dark:to-gray-600"></span>
+
+  <span className="shrink-0 px-4 text-gray-900 dark:text-white"></span>
+
+  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-300 dark:to-gray-600"></span>
+</span>
 
       {/* Vision Section */}
       <section className="relative z-10 px-6 md:px-16 py-20 grid md:grid-cols-2 gap-12 items-center">
@@ -135,24 +146,40 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 md:px-16 text-center">
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Ready to Collaborate?
-        </motion.h2>
+       
+      <motion.h2
+    className="text-3xl md:text-4xl font-bold mb-6 text-white"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    The best way to grow is to{" "}
+    <PointerHighlight
+      rectangleClassName="border-white rounded-md"
+      pointerClassName="text-blue-500"
+      containerClassName="inline-block"
+    >
+      <span className=" text-white px-1 font-extrabold">
+        collaborate
+      </span>
+    </PointerHighlight>
+  </motion.h2>
         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
           Whether you&apos;re launching something new or leveling up, CitrUX is your partner in design, development, and digital transformation.
         </p>
         
         <Link
-          href="/book"
-          className="inline-block bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-500 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition-all duration-300"
-        >
-          Book a Free Consultation
-        </Link>
+  href="/contact"
+  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-950 mt-4"
+>
+  {/* Spinning gradient border */}
+  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+  
+  {/* Inner content */}
+  <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-semibold text-white backdrop-blur-3xl z-10 relative">
+  Schedule Free Consultation →
+  </span>
+</Link>
       </section>
 
       <Footer />
