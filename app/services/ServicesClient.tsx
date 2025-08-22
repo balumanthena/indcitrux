@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
+import { useSwipeable } from 'react-swipeable';
 
 /* -------------------------------------------------------------------------- */
 /* ------------------------- FUTURISTIC SERVICES PAGE ------------------------ */
@@ -70,6 +71,15 @@ export default function ServicesClient() {
   const [index, setIndex] = useState<number>(defaultIndex >= 0 ? defaultIndex : 0);
   const selected = services[index];
 
+  // Use useCallback to memoize the functions
+  const handleNext = useCallback(() => {
+    setIndex((i) => (i + 1) % services.length);
+  }, [services.length]);
+
+  const handlePrev = useCallback(() => {
+    setIndex((i) => (i - 1 + services.length) % services.length);
+  }, [services.length]);
+
   useEffect(() => {
     try {
       const name = encodeURIComponent(selected.name.toLowerCase().split(' ')[0]);
@@ -82,14 +92,21 @@ export default function ServicesClient() {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === 'ArrowLeft') setIndex((i) => (i - 1 + services.length) % services.length);
-      if (e.key === 'ArrowRight') setIndex((i) => (i + 1) % services.length);
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
       if (e.key === 'Home') setIndex(0);
       if (e.key === 'End') setIndex(services.length - 1);
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  }, [handleNext, handlePrev]);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
 
   return (
     <div className="relative min-h-screen flex flex-col bg-gradient-to-b from-black via-slate-900 to-slate-950 text-white overflow-hidden">
@@ -102,7 +119,7 @@ export default function ServicesClient() {
 
       <AmbientBackground />
 
-      <header className="relative z-20 px-6 md:px-12 pt-12 pb-6">
+      <header className="relative z-20 px-4 md:px-12 pt-12 pb-6">
         <div className="mt-8 max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white pt-10">
             Services that feel like the future.
@@ -117,18 +134,18 @@ export default function ServicesClient() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 items-start">
           <aside className="col-span-1">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
-              <div role="listbox" aria-label="Services" className="space-y-4 sticky top-28">
+              <div role="listbox" aria-label="Services" className="space-y-4 md:sticky md:top-28">
                 {services.map((s, i) => (
                   <ServiceNavItem key={s.name} service={s} active={i === index} onClick={() => setIndex(i)} index={i} />
                 ))}
               </div>
-              <div className="mt-8 text-xs text-gray-400">
+              <div className="mt-8 text-xs text-gray-400 hidden md:block">
                 Tip: use <span className="text-white">←</span> <span className="text-white">→</span> to quickly navigate, or click a service.
               </div>
             </motion.div>
           </aside>
 
-          <section className="col-span-2">
+          <section className="col-span-2" {...handlers}>
             <AnimatePresence mode="wait">
               <motion.article
                 key={selected.name}
@@ -143,17 +160,13 @@ export default function ServicesClient() {
                   <div className="flex-1">
                     <h2 className="text-2xl md:text-3xl font-bold leading-tight">
                       <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-indigo-300 bg-clip-text text-transparent">{selected.name}</span>
-                      <span className="text-sm text-gray-400 ml-3">— {selected.description}</span>
+                      <span className="text-sm text-gray-400 ml-3 block md:inline">— {selected.description}</span>
                     </h2>
 
                     <p className="mt-4 text-gray-300 max-w-2xl leading-relaxed">{selected.details}</p>
 
                     <div className="mt-6 flex flex-wrap gap-3 items-center">
                       <NeonButton onClick={() => router.push('/book')}>Schedule Free Consultation</NeonButton>
-
-                     
-
-                      
                     </div>
                   </div>
 
@@ -162,10 +175,10 @@ export default function ServicesClient() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-center justify-between text-xs text-gray-400">
-                  <div>Quality-assured • Performance-first • Accessible</div>
-
-                  <div className="flex items-center gap-3">
+                <div className="mt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-2 sm:gap-0">
+                  <div className="text-center sm:text-left">Quality-assured • Performance-first • Accessible</div>
+                  
+                  <div className="flex items-center gap-3 mt-2 sm:mt-0">
                     <div className="text-xs text-purple-300">
                       {index + 1}/{services.length}
                     </div>
@@ -327,11 +340,20 @@ function ParallaxImage({ src, alt }: { src: string; alt: string }) {
   const rotateX = useTransform(y, [-100, 100], [-12, 12]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (isTouchDevice) {
+      x.set(0);
+      y.set(0);
+      return;
+    }
+
     const el = ref.current;
     if (!el) return;
 
     function onMove(e: PointerEvent) {
-      const rect = el!.getBoundingClientRect(); // non-null assertion to satisfy typescript
+      const rect = el!.getBoundingClientRect();
       const px = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
       const py = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
       x.set(px * 40);

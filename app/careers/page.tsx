@@ -1,16 +1,15 @@
 "use client";
 
 import Head from "next/head";
-import Link from "next/link";
 import { PiCheckCircleFill } from "react-icons/pi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import Image from "next/image";
 import LampDemo from "@/components/ui/lamp";
 import { UserPlus, ShieldCheck, Users } from "lucide-react";
 
+// ------------------ EXISTING INTERNSHIP OPTIONS ------------------
 const internships = [
   {
     name: "Beginner Internship",
@@ -53,6 +52,50 @@ const internships = [
   },
 ];
 
+// ------------------ NEW TRAINING PATH (Training → Internship → Placement) ------------------
+const programs = [
+  {
+    title: "Training",
+    duration: "Flexible (1–3 Months)",
+    description:
+      "Learn Product Designing, UX, Web, and Mobile Development powered by AI-driven technology to become industry-ready.",
+    features: [
+      "Hands-on projects with AI tools",
+      "Expert-led mentorship",
+      "Real-world product & app case studies",
+      "Flexible learning schedule",
+    ],
+    color: "from-teal-500 to-cyan-400",
+  },
+  {
+    title: "Internship",
+    duration: "3–6 Months",
+    description:
+      "Work on live UX, web, and mobile app projects to gain professional experience and exposure.",
+    features: [
+      "Real client & product projects",
+      "Exposure to industry-standard AI tools",
+      "Team collaboration",
+      "Letter of recommendation",
+    ],
+    color: "from-purple-600 to-pink-500",
+  },
+  {
+    title: "Placements",
+    duration: "Post Training / Internship",
+    description:
+      "Get placed with top companies or join CitrUX Technologies if you’re passionate about our mission.",
+    features: [
+      "Job-ready portfolio creation",
+      "Mock interviews & career guidance",
+      "Placement assistance with partner companies",
+      "Opportunity to get hired directly into CitrUX",
+    ],
+    color: "from-yellow-400 to-orange-500",
+  },
+];
+
+// ------------------ FAQ ------------------
 const faqs = [
   {
     question: "Who can apply for the internship?",
@@ -75,6 +118,7 @@ const faqs = [
   },
 ];
 
+// ------------------ MAIN COMPONENT ------------------
 const Careers = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
@@ -89,6 +133,7 @@ const Careers = () => {
 
   return (
     <div className="w-full min-h-screen bg-gray-950 text-white antialiased relative overflow-hidden">
+
       {/* Background Glow */}
       <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-700 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
       <div className="absolute bottom-[-150px] right-[-150px] w-[400px] h-[400px] bg-indigo-600 opacity-20 rounded-full blur-3xl animate-pulse z-0" />
@@ -97,7 +142,7 @@ const Careers = () => {
         <title>Join Our Internship Program | Citrux Technologies</title>
         <meta
           name="description"
-          content="Apply for exciting internships at Balu Tech Crop. Gain hands-on experience and kickstart your career!"
+          content="Apply for exciting internships and training at Citrux Technologies. Gain hands-on experience and kickstart your career!"
         />
       </Head>
 
@@ -144,7 +189,10 @@ const Careers = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.2 } } }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } },
+          }}
           className="grid md:grid-cols-3 gap-8"
         >
           {internships.map((internship, index) => (
@@ -194,13 +242,64 @@ const Careers = () => {
         </motion.div>
       </section>
 
-      <span className="flex items-center">
-        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-300 dark:to-gray-600"></span>
+      {/* Training → Internship → Placement Section */}
+      <section className="relative z-10 px-6 md:px-16 py-20 bg-gray-950">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">
+            Learn, Intern & Get Placed
+          </h2>
+          <p className="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+            Start with training, apply your skills in internships, and secure placements with us or partner companies.
+          </p>
+        </div>
 
-        <span className="shrink-0 px-4 text-gray-900 dark:text-white"></span>
+        <div className="grid md:grid-cols-3 gap-8">
+          {programs.map((program, index) => (
+            <motion.div
+              key={program.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              className="group relative overflow-hidden rounded-xl bg-gray-900 border border-gray-800 shadow-lg p-6 transition-all duration-300"
+            >
+              {/* Gradient Top Bar */}
+              <div
+                className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${program.color} group-hover:scale-x-100 scale-x-0 origin-left transition-transform duration-300`}
+              />
 
-        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-300 dark:to-gray-600"></span>
-      </span>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-semibold text-white">{program.title}</h3>
+                <span className="px-3 py-1 text-xs rounded-full bg-white/10 text-white font-medium">
+                  {program.duration}
+                </span>
+              </div>
+
+              {/* Description */}
+              <p className="text-sm text-gray-400 leading-relaxed mb-4">{program.description}</p>
+
+              <ul className="text-sm text-gray-300 space-y-2">
+                {program.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2">
+                    <PiCheckCircleFill className="text-green-400 mt-1" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <motion.button
+                onClick={() => setShowModal(true)}
+                whileTap={{ scale: 0.97 }}
+                whileHover={{ scale: 1.03 }}
+                className="mt-6 w-full py-2 px-4 rounded-md bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold shadow-lg transition-all duration-300 group-hover:shadow-cyan-500/40"
+              >
+                Apply Now
+              </motion.button>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* We're Hiring Section */}
       <section className="relative z-10 px-6 md:px-16 py-24 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950">
@@ -212,7 +311,7 @@ const Careers = () => {
             Be part of our fast-growing HCC medical coding team at Citrux. All roles require valid CPC/CRC certification.
           </p>
         </div>
-
+        {/* Roles */}
         <div className="grid md:grid-cols-3 gap-10">
           {[
             {
@@ -246,7 +345,7 @@ const Careers = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               whileHover={{ scale: 1.03 }}
-              className={`group p-6 rounded-2xl border border-gray-800 shadow-xl bg-gradient-to-br ${role.color} hover:shadow-${role.color.split(" ")[1]}/60 transition-all`}
+              className={`group p-6 rounded-2xl border border-gray-800 shadow-xl bg-gradient-to-br ${role.color} transition-all`}
             >
               <div className="flex items-center gap-4 mb-4">
                 <div className="p-3 bg-white/10 rounded-xl">{role.icon}</div>
@@ -269,7 +368,6 @@ const Careers = () => {
             </motion.div>
           ))}
         </div>
-
         <p className="text-center text-sm text-gray-500 mt-12">
           All applicants must email their resume to{" "}
           <span className="text-pink-400 font-semibold">careers@citrux.in</span> with subject line:{" "}
@@ -277,6 +375,7 @@ const Careers = () => {
         </p>
       </section>
 
+      {/* Lamp Demo */}
       <LampDemo />
 
       {/* FAQ Section */}
@@ -284,7 +383,6 @@ const Careers = () => {
         <h2 className="text-4xl font-extrabold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
           Frequently Asked Questions
         </h2>
-
         <div className="max-w-4xl mx-auto space-y-4">
           {faqs.map((faq, index) => (
             <div
@@ -367,7 +465,7 @@ const Careers = () => {
                 id="modal-title"
                 className="text-2xl font-extrabold text-white mb-4 text-center"
               >
-                Apply for Internship
+                Apply Now
               </h3>
               <p
                 id="modal-description"
