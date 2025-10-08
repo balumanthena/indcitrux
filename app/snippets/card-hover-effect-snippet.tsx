@@ -11,10 +11,6 @@ import {
   Headphones,
 } from "lucide-react";
 
-/**
- * CitrUX Branded Hover Cards (blue/purple accents)
- */
-
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -23,14 +19,13 @@ export type HoverItem = {
   icon?: React.ReactNode;
   title: string;
   description: string;
-  href?: string;
   badges?: string[];
   imageSrc?: string;
 };
 
 export function HoverEffect({ items, className }: { items: HoverItem[]; className?: string }) {
   return (
-    <div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6", className)}>
+    <div className={cn("grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8", className)}>
       {items.map((item, i) => (
         <HoverCard key={i} {...item} />
       ))}
@@ -38,11 +33,11 @@ export function HoverEffect({ items, className }: { items: HoverItem[]; classNam
   );
 }
 
-function HoverCard({ icon, title, description, href, badges, imageSrc }: HoverItem) {
+function HoverCard({ icon, title, description, badges, imageSrc }: HoverItem) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const rotateX = useTransform(y, [-60, 60], [6, -6]);
-  const rotateY = useTransform(x, [-60, 60], [-6, 6]);
+  const rotateX = useTransform(y, [-60, 60], [8, -8]);
+  const rotateY = useTransform(x, [-60, 60], [-8, 8]);
 
   function onMove(e: React.MouseEvent<HTMLDivElement>) {
     const r = e.currentTarget.getBoundingClientRect();
@@ -50,69 +45,58 @@ function HoverCard({ icon, title, description, href, badges, imageSrc }: HoverIt
     y.set(e.clientY - (r.top + r.height / 2));
   }
 
-  const Wrapper = href ? "a" : "div";
-  const wrapperProps = href ? { href, target: "_self", rel: "noreferrer" } : {};
+  function onLeave() {
+    x.set(0);
+    y.set(0);
+  }
 
   return (
     <motion.article
       onMouseMove={onMove}
+      onMouseLeave={onLeave}
       style={{ rotateX, rotateY }}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300, damping: 24, mass: 0.5 }}
+      whileHover={{ y: -10, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.5 }}
       className={cn(
-        "group relative rounded-2xl border shadow-md",
-        // CitrUX brand accent with subtle gradient
-        "bg-gradient-to-b from-white to-white dark:from-neutral-900 dark:to-neutral-900/80",
+        "relative group rounded-2xl border shadow-md overflow-hidden",
+        "bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-neutral-900 dark:via-blue-950/30 dark:to-purple-950/30",
         "border-neutral-200 dark:border-white/10",
-        "p-6 flex flex-col gap-4 min-h-[220px]",
-        "transition-all duration-300 will-change-transform"
+        "p-6 flex flex-col justify-between min-h-[280px] h-[280px]",
+        "transition-all duration-300 will-change-transform transform-gpu"
       )}
       tabIndex={0}
       aria-label={title}
       role="article"
     >
-      {/* branded glow */}
+      {/* Outer glow (brand accent) */}
       <div
         className={cn(
           "pointer-events-none absolute inset-0 rounded-2xl",
-          "ring-0 group-hover:ring-4 group-focus:ring-4",
-          // CitrUX blue-purple accent glow
-          "group-hover:ring-blue-500/30 dark:group-hover:ring-purple-500/40",
-          "transition-all duration-300"
+          "opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+          "shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] dark:shadow-[0_0_45px_-10px_rgba(147,51,234,0.5)]"
         )}
         aria-hidden
       />
 
-      {/* subtle brand edge highlight */}
+      {/* Top gradient light */}
       <div
         className={cn(
-          "pointer-events-none absolute inset-0 rounded-2xl",
-          "[mask-image:linear-gradient(to_bottom,black,transparent_80%)]",
-          "bg-gradient-to-br from-blue-500/10 via-purple-500/5 to-transparent",
-          "opacity-0 group-hover:opacity-100 group-focus:opacity-100",
-          "transition-opacity duration-300"
+          "absolute inset-0 rounded-2xl",
+          "bg-gradient-to-t from-transparent via-blue-500/5 to-purple-500/10",
+          "opacity-0 group-hover:opacity-100 transition-opacity duration-500"
         )}
         aria-hidden
       />
 
-      <Wrapper
-        className={cn(
-          "relative z-10 flex items-start gap-4 focus:outline-none",
-          href && "after:absolute after:inset-0"
-        )}
-        {...(wrapperProps as any)}
-      >
-        {/* Icon or image slot */}
+      <div className="relative z-10 flex items-start gap-4">
         {imageSrc ? (
           <div className="shrink-0 overflow-hidden rounded-xl border w-16 h-16 border-neutral-200 dark:border-white/10">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={imageSrc} alt="" className="w-full h-full object-cover" />
           </div>
         ) : (
           <div
             className={cn(
               "shrink-0 rounded-xl p-3",
-              // Branded tile with gradient
               "bg-gradient-to-br from-blue-600 to-purple-600 text-white",
               "shadow-inner border border-white/20"
             )}
@@ -122,8 +106,12 @@ function HoverCard({ icon, title, description, href, badges, imageSrc }: HoverIt
         )}
 
         <div className="flex-1">
-          <h3 className={cn("text-[15px] sm:text-base font-semibold tracking-tight", "text-neutral-900 dark:text-white")}>{title}</h3>
-          <p className={cn("mt-1 text-[13px] sm:text-sm leading-relaxed", "text-neutral-700 dark:text-neutral-200")}>{description}</p>
+          <h3 className="text-[15px] sm:text-base font-semibold tracking-tight text-neutral-900 dark:text-white">
+            {title}
+          </h3>
+          <p className="mt-1 text-[13px] sm:text-sm leading-relaxed text-neutral-700 dark:text-neutral-200">
+            {description}
+          </p>
 
           {badges?.length ? (
             <div className="mt-3 flex flex-wrap gap-2">
@@ -142,14 +130,14 @@ function HoverCard({ icon, title, description, href, badges, imageSrc }: HoverIt
             </div>
           ) : null}
         </div>
-      </Wrapper>
+      </div>
 
+      {/* Bottom light line */}
       <div className="mt-auto pt-2">
         <div
           className={cn(
-            "h-px w-full bg-gradient-to-r from-transparent via-blue-400/50 to-transparent dark:via-purple-500/40",
-            "opacity-0 group-hover:opacity-100 group-focus:opacity-100",
-            "transition-opacity duration-300"
+            "h-px w-full bg-gradient-to-r from-transparent via-blue-400/70 to-transparent dark:via-purple-500/60",
+            "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           )}
         />
       </div>
@@ -157,9 +145,7 @@ function HoverCard({ icon, title, description, href, badges, imageSrc }: HoverIt
   );
 }
 
-// ----------------------
-// Demo with CitrUX branding
-// ----------------------
+// Demo Component
 export function CardHoverEffectDemo() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-12">
@@ -172,43 +158,43 @@ export const projects: HoverItem[] = [
   {
     icon: <MonitorSmartphone className="w-6 h-6" />,
     title: "Website Design",
-    description: "Responsive, conversion-focused websites with crisp typography and balanced spacing.",
-    href: "/services/web-design",
+    description:
+      "Responsive, conversion-focused websites with crisp typography and balanced spacing.",
     badges: ["SEO-ready", "Next.js", "A11y"],
   },
   {
     icon: <ShoppingCart className="w-6 h-6" />,
-    title: "E‑commerce Store",
-    description: "Fast carts, clean PDPs, and streamlined checkout flows that scale.",
-    href: "/services/ecommerce",
+    title: "E-commerce Store",
+    description:
+      "Fast carts, clean PDPs, and streamlined checkout flows that scale.",
     badges: ["Stripe", "Analytics"],
   },
   {
     icon: <Palette className="w-6 h-6" />,
     title: "UI / UX",
-    description: "Delightful, intuitive interfaces designed for clarity, speed, and consistency.",
-    href: "/services/ui-ux",
+    description:
+      "Delightful, intuitive interfaces designed for clarity, speed, and consistency.",
     badges: ["Design Systems", "Prototyping"],
   },
   {
     icon: <Heart className="w-6 h-6" />,
     title: "Health Service",
-    description: "Comprehensive R1 and RCM services with reliable, measurable outcomes.",
-    href: "/services/health",
+    description:
+      "Comprehensive R1 and RCM services with reliable, measurable outcomes.",
     badges: ["R1", "RCM"],
   },
   {
     icon: <Smartphone className="w-6 h-6" />,
     title: "App Development",
-    description: "Custom iOS & Android apps built for performance, stability, and growth.",
-    href: "/services/apps",
+    description:
+      "Custom iOS & Android apps built for performance, stability, and growth.",
     badges: ["iOS", "Android", "API"],
   },
   {
     icon: <Headphones className="w-6 h-6" />,
     title: "Support",
-    description: "Proactive support with clear SLAs—real people, real answers, on time.",
-    href: "/support",
+    description:
+      "Proactive support with clear SLAs—real people, real answers, on time.",
     badges: ["24/7", "SLA"],
   },
 ];

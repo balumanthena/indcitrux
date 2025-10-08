@@ -8,11 +8,9 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { PointerHighlight } from "@/components/ui/pointer-highlight";
 
-
-
 export default function AboutPage() {
   return (
-    <div className="relative min-h-screen bg-gray-950 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-slate-950 text-white overflow-hidden antialiased">
       <Head>
         <title>About Us | CitrUX</title>
         <meta
@@ -24,7 +22,7 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[90vh] overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#0e0e0e] to-[#121212] text-white flex items-center justify-center px-6 md:px-16">
+      <section className="relative w-full h-[90vh] overflow-hidden bg-gradient-to-br from-[#060608] via-[#0b0b0d] to-[#0f0f12] text-white flex items-center justify-center px-6 md:px-16">
         <div className="absolute w-[600px] h-[600px] bg-purple-800 opacity-20 rounded-full blur-[100px] top-[-100px] left-[-200px] animate-pulse" />
         <div className="absolute w-[500px] h-[500px] bg-blue-700 opacity-20 rounded-full blur-[100px] bottom-[-150px] right-[-200px] animate-pulse" />
 
@@ -35,7 +33,7 @@ export default function AboutPage() {
           className="relative z-10 text-center max-w-4xl"
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
+            className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white drop-shadow-[0_8px_30px_rgba(99,102,241,0.06)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
@@ -55,57 +53,64 @@ export default function AboutPage() {
       </section>
 
       <span className="flex items-center">
-  <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-300 dark:to-gray-600"></span>
-
-  <span className="shrink-0 px-4 text-gray-900 dark:text-white"></span>
-
-  <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-300 dark:to-gray-600"></span>
-</span>
+        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-gray-700"></span>
+        <span className="shrink-0 px-4 text-gray-900 dark:text-white"></span>
+        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-gray-700"></span>
+      </span>
 
       {/* Vision Section */}
-      <section className="relative z-10 px-6 md:px-16 py-20 grid md:grid-cols-2 gap-12 items-center">
-  <motion.div
-    initial={{ opacity: 0, x: -30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-  >
-    <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-snug">
-      Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Vision</span>
-    </h2>
+      <section className="relative z-10 px-6 md:px-16 py-20 grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-snug">
+            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Vision</span>
+          </h2>
 
-    <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-5">
-      <p>
-        CitrUX exists to transform bold ideas into scalable, human-centered digital products that drive measurable outcomes. We&apos;re not just a digital agency—we are strategic partners for innovation, growth, and meaningful change.
-      </p>
-      <p>
-        Our process starts with empathy. We deeply understand the problems, needs, and behaviors of the people who will use the solutions we build. From startups to global enterprises, we collaborate closely with our clients to craft intuitive digital experiences that are both elegant and efficient.
-      </p>
-      <p>
-        At the heart of CitrUX is a belief in clarity through design. Every interaction, layout, and visual element is intentional—aimed at reducing complexity and enhancing user engagement. We pair that design-first mindset with cutting-edge technologies to move quickly and scale effectively, without ever compromising on quality.
-      </p>
-      <p>
-        Whether it&apos;s developing next-gen platforms, reimagining customer experiences, or streamlining operations with AI-powered tools, our goal is to create impact. And that impact is measured not just in metrics, but in the lasting value we bring to our partners and the communities they serve.
-      </p>
-    </div>
-  </motion.div>
+          <div className="text-gray-300 text-base md:text-lg leading-relaxed space-y-5">
+            <p>
+              CitrUX exists to transform bold ideas into scalable, human-centered digital products that drive measurable outcomes. We&apos;re not just a digital agency—we are strategic partners for innovation, growth, and meaningful change.
+            </p>
+            <p>
+              Our process starts with empathy. We deeply understand the problems, needs, and behaviors of the people who will use the solutions we build. From startups to global enterprises, we collaborate closely with our clients to craft intuitive digital experiences that are both elegant and efficient.
+            </p>
+            <p>
+              At the heart of CitrUX is a belief in clarity through design. Every interaction, layout, and visual element is intentional—aimed at reducing complexity and enhancing user engagement. We pair that design-first mindset with cutting-edge technologies to move quickly and scale effectively, without ever compromising on quality.
+            </p>
+            <p>
+              Whether it&apos;s developing next-gen platforms, reimagining customer experiences, or streamlining operations with AI-powered tools, our goal is to create impact. And that impact is measured not just in metrics, but in the lasting value we bring to our partners and the communities they serve.
+            </p>
+          </div>
+        </motion.div>
 
-  <motion.div
-    initial={{ opacity: 0, scale: 0.95 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <Image
-      src="/images/image-business.jpeg"
-      alt="Vision"
-      width={600}
-      height={400}
-      className="rounded-xl shadow-2xl object-cover"
-      priority
-    />
-  </motion.div>
-</section>
+        {/* Image with Staffing-like frame & border */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="rounded-2xl p-3 group">
+            <div className="rounded-2xl border-2 border-white/20 p-4 bg-transparent shadow-sm group-hover:ring-2 group-hover:ring-slate-700/50 transition">
+              <figure className="rounded-xl overflow-hidden bg-white/3 transition-transform transform group-hover:scale-[1.01]">
+                <div className="relative w-full aspect-[4/3]">
+                  <Image
+                    src="/images/image-business.jpeg"
+                    alt="Vision"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              </figure>
+            </div>
+          </div>
+        </motion.div>
+      </section>
 
 
       {/* Core Values Section */}
@@ -120,7 +125,7 @@ export default function AboutPage() {
           Our Core Pillars
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {[
             { title: 'Innovation', desc: 'Pushing boundaries to build what matters most.' },
             { title: 'Transparency', desc: 'Open dialogue, honest process, ethical choices.' },
@@ -146,40 +151,38 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6 md:px-16 text-center">
-       
-      <motion.h2
-    className="text-3xl md:text-4xl font-bold mb-6 text-white"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
-    The best way to grow is to{" "}
-    <PointerHighlight
-      rectangleClassName="border-white rounded-md"
-      pointerClassName="text-blue-500"
-      containerClassName="inline-block"
-    >
-      <span className=" text-white px-1 font-extrabold">
-        collaborate
-      </span>
-    </PointerHighlight>
-  </motion.h2>
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold mb-6 text-white max-w-4xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          The best way to grow is to{' '}
+          <PointerHighlight
+            rectangleClassName="border-white rounded-md"
+            pointerClassName="text-blue-500"
+            containerClassName="inline-block"
+          >
+            <span className=" text-white px-1 font-extrabold">collaborate</span>
+          </PointerHighlight>
+        </motion.h2>
+
         <p className="text-gray-300 max-w-2xl mx-auto mb-8">
           Whether you&apos;re launching something new or leveling up, CitrUX is your partner in design, development, and digital transformation.
         </p>
-        
+
         <Link
-  href="/contact"
-  className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-950 mt-4"
->
-  {/* Spinning gradient border */}
-  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
-  
-  {/* Inner content */}
-  <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-semibold text-white backdrop-blur-3xl z-10 relative">
-  Schedule Free Consultation →
-  </span>
-</Link>
+          href="/contact"
+          className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-gray-950 mt-4"
+        >
+          {/* Spinning gradient border */}
+          <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+
+          {/* Inner content */}
+          <span className="inline-flex h-full w-full items-center justify-center rounded-full bg-slate-950 px-6 py-2 text-sm font-semibold text-white backdrop-blur-3xl z-10 relative">
+            Schedule Free Consultation →
+          </span>
+        </Link>
       </section>
 
       <Footer />
