@@ -66,7 +66,7 @@ const Footer = () => {
         <div className="space-y-4 md:col-span-1">
           <Link href="/" className="inline-block">
             <Image
-              src="https://assets.citrux.in/images/citrux_dark_logo.svg"
+              src="/logo/logo.png"
               alt="CitrUX Logo"
               width={140}
               height={40}
@@ -189,6 +189,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
+       {/* Background Logo Style */}
+       <div className="relative h-32 flex items-center justify-center overflow-hidden">
+          <div className="text-[120px] font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2a2a2a] to-[#1a1a1a] select-none opacity-100">
+            CITRUX
+          </div>
+        </div>
 
       {/* Bottom Line */}
       <div className="border-t border-white/10 pt-6 text-center text-sm text-gray-500">

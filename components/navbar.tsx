@@ -133,7 +133,7 @@ const Navbar = () => {
           <Link href="/" className="cursor-pointer">
             <Image
               priority
-              src="https://assets.citrux.in/images/citrux_dark_logo.svg"
+              src="/logo/logo.png"
               alt="Logo"
               width={120}
               height={40}
